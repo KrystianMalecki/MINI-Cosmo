@@ -2,34 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : ScriptedEntity
 {
-    public float Speed;
-    public float RotationSpeed;
-    public Rigidbody2D r2d;
-    public void RotateGunBarrel()
+    public bool RelativeMovement;
+    public void FollowMouse()
     {
-       Vector2 mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-       transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((mousepos.y - transform.position.y), (mousepos.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * RotationSpeed);
+        Vector2 mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
+        LookAt(mousepos);
     }
-    void Update()
+    public void move(Vector3 v3)
     {
-        RotateGunBarrel();
-        if (Input.GetKey(KeyCode.W))
+        if (RelativeMovement)
         {
             r2d.AddForce(transform.up * Speed);
         }
+        else
+        {
+            r2d.AddRelativeForce(transform.up * Speed);
+
+        }
+    }
+    void Update()
+    {
+        FollowMouse();
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            move(transform.up * Speed);
+        }
         if (Input.GetKey(KeyCode.S))
         {
-            r2d.AddForce(-transform.up * Speed);
+            move(-transform.up * Speed);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            r2d.AddForce(-transform.right * Speed);
+            move(-transform.right * Speed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            r2d.AddForce(transform.right * Speed);
+            move(transform.right * Speed);
         }
     }
 }
