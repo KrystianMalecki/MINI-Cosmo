@@ -21,4 +21,5 @@ public class StaticDataManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    
 }

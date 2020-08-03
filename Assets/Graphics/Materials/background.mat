@@ -43,7 +43,7 @@ Material:
     - Vector1_1541F59: 160
     - Vector1_6424CC6D: 100
     - Vector1_9A03FBD3: 0.02
-    - Vector1_B9B1678A: 10
+    - Vector1_B9B1678A: 9.73
     - _EnableExternalAlpha: 0
     m_Colors:
     - Color_9C90171B: {r: 13.942683, g: 13.1784, b: 6.7740393, a: 1}

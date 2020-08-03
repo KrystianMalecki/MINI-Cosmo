@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f65abe159e391454b9c93ada6eab94e6, type: 3}
-  m_Name: Normal Bullet
+  m_Name: posisk
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 6fb45509a5ef73e4bbfa269246b5daff, type: 3}
-  color: {r: 5.992157, g: 2.9490197, b: 0, a: 1}
+  Image: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
   AdditionalEffect: {fileID: 0}
-  RangeInSeconds: 10
-  Damage: 1
-  Speed: 3
-  FireRate: 5
+  RangeInSeconds: 0
+  Damage: 0
+  Speed: 0
+  FireRate: 1
   Cost: 0
   Inaccuracity: 0
   BulletCount: 1
   Knockback: 0
   Recoil: 0
-  Size: 0.1
+  Size: 0
   IsPiercing: 0
   PierceCount: 1
   IsHoming: 0

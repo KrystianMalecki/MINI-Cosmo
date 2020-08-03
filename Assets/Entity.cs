@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour
     private GameObject Explosion;
     public void Start()
     {
-        Die();
+      //  Die();
     }
     public virtual void Damage(float value, Transform t)
     {

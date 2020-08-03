@@ -14,11 +14,11 @@ public class Player : ScriptedEntity
     {
         if (RelativeMovement)
         {
-            r2d.AddForce(transform.up * Speed);
+            r2d.AddForce(v3 * Speed);
         }
         else
         {
-            r2d.AddRelativeForce(transform.up * Speed);
+            r2d.AddRelativeForce(v3 * Speed);
 
         }
     }
