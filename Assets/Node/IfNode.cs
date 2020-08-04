@@ -32,8 +32,7 @@ public class IfNode : Node
         }
         else
         {
-            Debug.Log("magic");
-            Debug.Log(data.cond_json);
+
             condition = JsonUtility.FromJson<Condition>(data.cond_json);
         }
        
@@ -99,7 +98,7 @@ public class IfNodeNodeData
     public IfNodeNodeData(Condition c)
     {
         cond_json = JsonUtility.ToJson(c);
-        Debug.Log("packed"+cond_json);
+      //  Debug.Log("packed"+cond_json);
     }
 }
 

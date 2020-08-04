@@ -8,13 +8,16 @@ public class NodeBasedEditor : EditorWindow
 {
     public List<Node> nodes = new List<Node>();
     public List<Connection> connections = new List<Connection>();
-
+    public bool select_multiple;
 
     private ConnectionPoint selectedInPoint;
     private ConnectionPoint selectedOutPoint;
 
     private Vector2 offset;
     private Vector2 drag;
+    public NodePackString nps = null;
+    public SerializedProperty sp;
+    public SerializedObject so;
     public static NodeBasedEditor window;
     [MenuItem("Window/Node Based Editor")]
     private static void OpenWindow()
@@ -27,33 +30,44 @@ public class NodeBasedEditor : EditorWindow
 
     private void OnEnable()
     {
-       
 
+        so = new SerializedObject(this);
+        sp = so.FindProperty("nps");
         LoadData();
     }
     private void LoadData()
     {
-        if (PlayerPrefs.HasKey("nodes"))
+        if (nps != null)
         {
-            if (nodes == null)
+            nps.loader();
+                if (nodes == null)
+                {
+                    nodes = new List<Node>();
+                }
+                nodes.Clear();
+                NodePack np = new NodePack();
+                np = nps.NodePack;
+            if (nodes != null)
             {
-                nodes = new List<Node>();
-            }
-            nodes.Clear();
-            NodePack np = new NodePack();
-            np = JsonUtility.FromJson<NodePack>(PlayerPrefs.GetString("nodes"));
-            foreach (NodeDataSaver n in np.nodes)
-            {
-               AddNewNode(n.type, n.position, n.data,n.ResponseID);
 
-            }
-            connections = new List<Connection>();
-            foreach (Node n in nodes)
-            {
-                n.addCon(this);
-            }
-            // nodes = np.nodes;
 
+                foreach (NodeDataSaver n in np.nodes)
+                {
+                    AddNewNode(n.type, n.position, n.data, n.ResponseID);
+
+                }
+                connections = new List<Connection>();
+
+                foreach (Node n in nodes)
+                {
+                    n.addCon(this);
+                }
+            }
+                
+                // nodes = np.nodes;
+
+            
+          
         }
     }
     private void OnGUI()
@@ -63,12 +77,36 @@ public class NodeBasedEditor : EditorWindow
 
         DrawNodes();
         DrawConnections();
-
         DrawConnectionLine(Event.current);
 
         ProcessNodeEvents(Event.current);
         ProcessEvents(Event.current);
+        so.Update();
+        EditorGUI.BeginChangeCheck();
+        EditorGUI.PropertyField(new Rect(160,10, 280, 20), sp);
+        so.ApplyModifiedProperties();
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            LoadData();
+        }
+     //   so.ApplyModifiedProperties();
+        if (GUI.Button(new Rect(10, 10, 150, 20), "Remove Selected"))
+        {
+            for(int a = 0; a < nodes.Count; a++)
+            {
+                if (nodes[a].isSelected)
+                {
+                    OnClickRemoveNode(nodes[a]);
+                    a--;
+                }
+            }
+        }
+        select_multiple = GUI.Toggle(new Rect(10, 30, 150, 20), select_multiple, "Select multiple");
+       
+            
         
+
         if (GUI.changed) Repaint();
     }
 
@@ -311,7 +349,7 @@ public class NodeBasedEditor : EditorWindow
 
             for (int i = 0; i < connections.Count; i++)
             {
-                if (connections[i].inPoint == node.inPoint/* || connections[i].outPoint == node.outPoint*/)
+                if (connections[i].inPoint == node.inPoint ||  node.outPoints.ContainsKey(connections[i].outPoint)||connections[i].inPoint.node.id== node.id || connections[i].outPoint.node.id == node.id)
                 {
                     connectionsToRemove.Add(connections[i]);
                 }
@@ -326,6 +364,10 @@ public class NodeBasedEditor : EditorWindow
         }
 
         nodes.Remove(node);
+        for(int a=0; a < nodes.Count; a++)
+        {
+            nodes[a].id = a;
+        }
     }
 
     public void OnClickRemoveConnection(Connection connection)
@@ -358,8 +400,11 @@ public class NodeBasedEditor : EditorWindow
         {
             np.nodes.Add(n.getNodeDS());
         }
-        string s = JsonUtility.ToJson(np);
-        PlayerPrefs.SetString("nodes", s);
+        //string s = JsonUtility.ToJson(np);
+
+        nps.NodePack = np;
+        nps.saver();
+       // PlayerPrefs.SetString("nodes", s);
         window = null;
     }
 }

@@ -17,8 +17,9 @@ public class TextNode : Node
         {
             data = new TextNodeData();
         }
-        rect = new Rect(rect.position.x, rect.position.y, 200, 200);
-        for(int a = 0; a < NodeDataSaver.ResponseID.Count; a++)
+        rect = new Rect(rect.position.x, rect.position.y, 200, 185 + NodeDataSaver.ResponseID.Count * 25);
+
+        for (int a = 0; a < NodeDataSaver.ResponseID.Count; a++)
         {
             AddResponse();
         }
@@ -72,7 +73,7 @@ public class TextNode : Node
         {
             
         }*/
-        if (GUI.Button(new Rect(rect.position + new Vector2(10, y), new Vector2(180, 30)), "Add new response"))
+        if (GUI.Button(new Rect(rect.position + new Vector2(10, y), new Vector2(180, 20)), "Add new response"))
         {
             AddResponse();
         }
@@ -82,7 +83,7 @@ public class TextNode : Node
         
             outPoints.Add(new ConnectionPoint(this, ConnectionPointType.Out, 150 + 25 * outPoints.Count), NodeDataSaver.getResID(outPoints.Count));
 
-            rect = new Rect(rect.position.x, rect.position.y, 200, 200 + NodeDataSaver.ResponseID.Count * 25);
+            rect = new Rect(rect.position.x, rect.position.y, 200, 185 + outPoints.Count * 25);
         
     }
 

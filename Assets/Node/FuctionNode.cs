@@ -11,7 +11,6 @@ using UnityEngine.UIElements;
 public class FunctionNode : Node
 {
 
-    public FunctionNodeData data;
     public SerializedObject so;
     public SerializedProperty sp;
     public UnityEvent onActivate = new UnityEvent();
@@ -21,10 +20,7 @@ public class FunctionNode : Node
         rect = new Rect(rect.position,new Vector2(300,200));
         NodeDataSaver.type = NodeType.Function;
 
-        if (nodeInfo == "")
-        {
-            data = new FunctionNodeData();
-        }
+        
         outPoints.Add(new ConnectionPoint(this, ConnectionPointType.Out, 10), NodeDataSaver.getResID(0));
         so = new SerializedObject(this);
          sp = so.FindProperty("onActivate");
@@ -72,21 +68,24 @@ public class FunctionNode : Node
 
     public override string ToJson()
     {
-        return JsonUtility.ToJson(data);
+        return JsonUtility.ToJson(onActivate);
     }
     public override void StringSetup(string s)
     {
-        data = JsonUtility.FromJson<FunctionNodeData>(s);
+     
+      //  data = JsonUtility.FromJson<FunctionNodeData>(s);
+        onActivate =JsonUtility.FromJson<UnityEvent> (s);
     }
 
 }
 [Serializable]
 public class FunctionNodeData
 {
-    public string s = "";
-    public FunctionNodeData()
+    public string cond_json;
+    public FunctionNodeData(UnityEvent c)
     {
-
+        cond_json = JsonUtility.ToJson(c);
+        //  Debug.Log("packed"+cond_json);
     }
 }
 

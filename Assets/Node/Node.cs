@@ -39,13 +39,13 @@ public class Node : ScriptableObject
            // NodeBasedEditor nbe = NodeBasedEditor.window;
             
             if (cp.Value == -1) { continue; }
-            Debug.Log("worked");
-            Debug.Log(nbe);
-            Debug.Log(cp.Value);
+           // Debug.Log("worked");
+          //  Debug.Log(nbe);
+           // Debug.Log(cp.Value);
             ConnectionPoint cp1 = nbe.nodes[cp.Value].inPoint;
-            Debug.Log(cp1);
+           // Debug.Log(cp1);
             ConnectionPoint cp2 = cp.Key;
-            Debug.Log(cp2);
+          //  Debug.Log(cp2);
            
            
             nbe.CreateConnection(cp1, cp2);
@@ -79,6 +79,14 @@ public class Node : ScriptableObject
     
     public bool ProcessEvents(Event e)
     {
+        bool sel = false;
+        if(NodeBasedEditor.window != null )
+        {
+            if (NodeBasedEditor.window.select_multiple)
+            {
+                sel = true;
+            }
+        }
         switch (e.type)
         {
             case EventType.MouseDown:
@@ -91,7 +99,13 @@ public class Node : ScriptableObject
                         isSelected = true;
                         style = selectedNodeStyle;
                     }
-                    else
+                    else if (sel)
+                    {
+                        isSelected = !isSelected;
+                            GUI.changed = true;
+                       
+                    }
+                    else if(!((new Rect(10, 10, 150, 20).Contains(e.mousePosition))|| (new Rect(10, 30, 150, 20).Contains(e.mousePosition))))
                     {
                         GUI.changed = true;
                         isSelected = false;
@@ -130,7 +144,7 @@ public class Node : ScriptableObject
         genericMenu.ShowAsContext();
     }
 
-    private void OnClickRemoveNode()
+    public void OnClickRemoveNode()
     {
         if (NodeBasedEditor.window != null)
         {
@@ -144,18 +158,18 @@ public class Node : ScriptableObject
     public NodeDataSaver getNodeDS()
     {
         NodeDataSaver.ResponseID.Clear();
-
+        NodeDataSaver.position = rect.position;
         foreach (KeyValuePair<ConnectionPoint, int> cp in outPoints)
         {
-            Debug.Log(id + "-" + cp.Value);
+           // Debug.Log(id + "-" + cp.Value);
             NodeDataSaver.ResponseID.Add(cp.Value);
         }
 
        
-            Debug.Log("NDS:"+NodeDataSaver.ResponseID.Count);
+           // Debug.Log("NDS:"+NodeDataSaver.ResponseID.Count);
         
             NodeDataSaver nds = NodeDataSaver;
-        Debug.Log("nds"+nds.ResponseID.Count);
+      //  Debug.Log("nds"+nds.ResponseID.Count);
 
         nds.data = ToJson();
         return nds;
@@ -164,12 +178,7 @@ public class Node : ScriptableObject
 
 
 
-[Serializable]
-public class NodePack
-{
-    [SerializeField]
-    public List<NodeDataSaver> nodes = new List<NodeDataSaver>();
-}
+
 [Serializable]
 public class NodeDataSaver
 {
