@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEditor;
+#if UnityEditor
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEditorInternal;
 using UnityEngine.Events;
@@ -102,4 +103,4 @@ public class IfNodeNodeData
     }
 }
 
-
+#endif

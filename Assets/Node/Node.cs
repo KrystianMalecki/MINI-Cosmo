@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+#if UnityEditor
 [Serializable]
 public class Node : ScriptableObject
 {
@@ -178,7 +179,7 @@ public class Node : ScriptableObject
 
 
 
-
+#endif
 [Serializable]
 public class NodeDataSaver
 {

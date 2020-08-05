@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
-
+#if UnityEditor
 public class BuiltInResourcesWindow : EditorWindow
 {
     [MenuItem("Window/Built-in styles and icons")]
@@ -224,3 +224,4 @@ public class BuiltInResourcesWindow : EditorWindow
         editor.Copy();
     }
 }
+#endif

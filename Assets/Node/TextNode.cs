@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+#if UnityEditor
 [Serializable]
 public class TextNode : Node
 {
@@ -113,3 +114,4 @@ public class TextNodeData
         reponse = "[RESPONSE]";
     }
 }
+#endif

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
-
+#if UnityEditor
 public class Connection
 {
     public ConnectionPoint inPoint;
@@ -35,3 +35,4 @@ public class Connection
 
     }
 }
+#endif

@@ -190,9 +190,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_Mass: 10
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -217,7 +217,6 @@ MonoBehaviour:
   Data: {fileID: 0}
   Target: {fileID: 0}
   r2d: {fileID: 5566205743941762604}
-  ShootPoint: {fileID: 0}
   SR: {fileID: 4860382631378548657}
 --- !u!212 &4860382631378548657
 SpriteRenderer:

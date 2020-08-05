@@ -1,19 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
-
 public class Entity : MonoBehaviour
 {
     public float HP;
     public float MaxHP;
     private GameObject Explosion;
-    public void Start()
+    public Rigidbody2D r2d;
+    public Image hpbar;
+    public virtual void Start()
     {
-      //  Die();
+        HP = MaxHP;
+        Damage(0);
     }
-    public virtual void Damage(float value, Transform t)
+    public virtual void Damage(float value)
     {
         HP -= value;
+        if (hpbar != null)
+        {
+            hpbar.fillAmount = HP / MaxHP;
+        }
         if (HP <= 0)
         {
             Die();

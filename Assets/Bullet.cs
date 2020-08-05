@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     public GameObject Target;
     [Header("Bullet Settings")]
     public Rigidbody2D r2d;
-    public GameObject ShootPoint;
+   // public GameObject ShootPoint;
     public SpriteRenderer SR;
     public void Create()
     {
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
         //  image.color = Data.color;
         r2d.AddForce(gameObject.transform.up * Data.Speed, ForceMode2D.Impulse);
         Invoke("ActivateDestroy", Data.RangeInSeconds);
-        if (Data.IsHoming)
+        if (Data.IsHoming|| Data.IsAutoTargeting)
         {
 
             StartCoroutine("home");
@@ -44,9 +44,11 @@ public class Bullet : MonoBehaviour
         {
             if (Data.IsAutoTargeting)
             {
+                if (Target != null)
+                {
 
-
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((Target.transform.position.y - transform.position.y), (Target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * Data.HomingRotation);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((Target.transform.position.y - transform.position.y), (Target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * Data.HomingRotation);
+                }
             }
             else
             {
@@ -70,7 +72,7 @@ public class Bullet : MonoBehaviour
         {
             // if (collision.transform.CompareTag("Enemy"))
             {
-                if ((CanAttackPlayer && collision.transform.CompareTag("Player")) || (!CanAttackPlayer && collision.transform.CompareTag("Enemy")))
+                if (StaticDataManager.instance.isOkTarget(!CanAttackPlayer, collision.tag)/*(CanAttackPlayer && collision.transform.CompareTag("Player")) || (!CanAttackPlayer && collision.transform.CompareTag("Enemy"))*/)
                 {
                     if (!Data.IsExplosive)
                     {
@@ -108,21 +110,21 @@ public class Bullet : MonoBehaviour
     {
 
         Entity e;
-        Rigidbody2D r2d_e;
 
         if (transformer.TryGetComponent(out e))
         {
            
-            if ((CanAttackPlayer && transformer.CompareTag("Player")) || (!CanAttackPlayer && transformer.CompareTag("Enemy")))
+            if (StaticDataManager.instance.isOkTarget(!CanAttackPlayer, transformer.tag))
             {
-                e.Damage(Data.Damage,transform );
+                e.Damage(Data.Damage);
+                if (e.r2d != null)
+                {
+                    e.r2d.AddForce((transform.position - transformer.position).normalized*Data.Knockback);
+                }
             }
             return true;
         }
-        else
-        {
-            return false;
-        }
+       
         return false;
     }
     public void Hit(Transform transformer)

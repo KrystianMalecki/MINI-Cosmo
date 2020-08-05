@@ -3,7 +3,9 @@ using UnityEditor;
 using System.Collections.Generic;
 using System;
 using System.Net.NetworkInformation;
+
 public enum NodeType { Text,Function,If }
+#if UnityEditor
 public class NodeBasedEditor : EditorWindow
 {
     public List<Node> nodes = new List<Node>();
@@ -408,3 +410,4 @@ public class NodeBasedEditor : EditorWindow
         window = null;
     }
 }
+#endif

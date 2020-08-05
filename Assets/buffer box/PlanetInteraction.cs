@@ -8,6 +8,8 @@ public class PlanetInteraction : MonoBehaviour
 {
     public GameObject Info;
     public Animator anim;
+
+   
     void OnMouseEnter()
     {
        // Info.SetActive(true);

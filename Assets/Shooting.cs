@@ -19,8 +19,8 @@ public class Shooting : MonoBehaviour
     public List<WeaponEq> Weapons;
     private GameObject BulletBase;
     public Rigidbody2D ShipR2D;
-    public bool HasAutoTargeting;
-    public GameObject Target = null;
+    public ScriptedEntity Shooter;
+
     public void Start()
     {
         BulletBase = StaticDataManager.instance.BulletBase;
@@ -28,38 +28,42 @@ public class Shooting : MonoBehaviour
     public void Shoot(int WeaponID)
     {
 
-
-
-        if (Weapons[WeaponID].FireRateTimer <= 0)
+        if (Shooter == null)
         {
-            ShipR2D.AddForce(-Weapons[WeaponID].ShootPoint.transform.up * Weapons[WeaponID].Data.Recoil);
-            for (int i = 0; i < Weapons[WeaponID].Data.BulletCount; i++)
+            return;
+        }
+        if (Shooter.Energy >= Weapons[WeaponID].Data.Cost)
+        {
+            if (Weapons[WeaponID].FireRateTimer <= 0)
             {
-
-
-                GameObject bullet = Instantiate(BulletBase, Weapons[WeaponID].ShootPoint.position, Weapons[WeaponID].ShootPoint.rotation);
-                bullet.transform.Rotate(new Vector3(0f, 0f, UnityEngine.Random.Range(-Weapons[WeaponID].Data.Inaccuracity, Weapons[WeaponID].Data.Inaccuracity)));
-                Bullet bulletCode = bullet.GetComponent<Bullet>();
-                bulletCode.CanAttackPlayer = !IsPlayer;
-
-                bulletCode.Data = Weapons[WeaponID].Data;
-                bulletCode.Create();
-                if (Weapons[WeaponID].Data.IsHoming)
+                ShipR2D.AddForce(-Weapons[WeaponID].ShootPoint.transform.up * Weapons[WeaponID].Data.Recoil);
+                for (int i = 0; i < Weapons[WeaponID].Data.BulletCount; i++)
                 {
-                    Target = GetTarget(10);
-                    if (Target != null)
+
+
+                    GameObject bullet = Instantiate(BulletBase, Weapons[WeaponID].ShootPoint.position, Weapons[WeaponID].ShootPoint.rotation);
+                    bullet.transform.Rotate(new Vector3(0f, 0f, UnityEngine.Random.Range(-Weapons[WeaponID].Data.Inaccuracity, Weapons[WeaponID].Data.Inaccuracity)));
+                    Bullet bulletCode = bullet.GetComponent<Bullet>();
+                    bulletCode.CanAttackPlayer = !IsPlayer;
+
+                    bulletCode.Data = Weapons[WeaponID].Data;
+                    bulletCode.Create();
+                    if ( Weapons[WeaponID].Data.IsAutoTargeting)
                     {
-                        bulletCode.Target = Target;
+                        GameObject Target = GetTarget(5);
+                        if (Target != null)
+                        {
+                            bulletCode.Target = Target;
+                        }
                     }
+
+
                 }
 
-
+                Weapons[WeaponID].FireRateTimer = 1f / Weapons[WeaponID].Data.FireRate;
+                Shooter.AddEnergy(-Weapons[WeaponID].Data.Cost);
             }
-
-            Weapons[WeaponID].FireRateTimer = 1f / Weapons[WeaponID].Data.FireRate;
-
         }
-
     }
     public void CoolDownCount(int id)
     {
@@ -77,16 +81,22 @@ public class Shooting : MonoBehaviour
         if (targets.Length > 0)
         {
             int distPos = 0;
-            float dist = -1;
+            float dist = 1000;
 
             for (int a = 0; a < targets.Length; a++)
             {
-                if (Vector2.Distance(targets[a].transform.position, transform.position) <= dist)
-                {
-                    dist = Vector2.Distance(targets[a].transform.position, transform.position);
-                    distPos = a;
+               // Debug.Log(targets[a]);
+              if(StaticDataManager.instance.isOkTarget(IsPlayer,targets[a].tag))
+                {// Debug.LogError(Vector2.Distance(targets[a].transform.position, transform.position) + " " + dist);
+
+                    if (Vector2.Distance(targets[a].transform.position, transform.position) <= dist)
+                    {
+                        dist = Vector2.Distance(targets[a].transform.position, transform.position);
+                        distPos = a;
+                    }
                 }
             }
+            Debug.LogError(targets[distPos].gameObject);
             return targets[distPos].gameObject;
         }
         return null;
@@ -123,7 +133,7 @@ public class Shooting : MonoBehaviour
 
         Handles.color = Color.blue;
 
-        Handles.DrawWireDisc(gameObject.transform.position, new Vector3(0, 0, 180), 10);
+        Handles.DrawWireDisc(gameObject.transform.position, new Vector3(0, 0, 180), 5);
 
 
 #endif

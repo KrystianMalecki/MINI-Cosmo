@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
-
+#if UnityEditor
 public enum ConnectionPointType { In, Out }
 
 public class ConnectionPoint
@@ -66,3 +66,4 @@ public class ConnectionPoint
         }
     }
 }
+#endif

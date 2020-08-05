@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+#if UnityEditor
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEditorInternal;
 using UnityEngine;
@@ -89,3 +90,4 @@ public class FunctionNodeData
     }
 }
 
+#endif

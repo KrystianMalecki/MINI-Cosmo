@@ -17,9 +17,9 @@ MonoBehaviour:
   AdditionalEffect: {fileID: 0}
   RangeInSeconds: 10
   Damage: 1
-  Speed: 3
+  Speed: 50
   FireRate: 5
-  Cost: 0
+  Cost: 1
   Inaccuracity: 0
   BulletCount: 1
   Knockback: 0
@@ -29,8 +29,8 @@ MonoBehaviour:
   PierceCount: 1
   IsHoming: 0
   IsAutoTargeting: 0
-  HomingSpeed: 0
-  HomingRotation: 0
+  HomingSpeed: 500
+  HomingRotation: 1000
   IsExplosive: 0
   ExplosionRange: 0
   ExplosionEffect: {fileID: 0}
