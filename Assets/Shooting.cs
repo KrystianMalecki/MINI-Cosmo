@@ -48,7 +48,7 @@ public class Shooting : MonoBehaviour
 
                     bulletCode.Data = Weapons[WeaponID].Data;
                     bulletCode.Create();
-                    if ( Weapons[WeaponID].Data.IsAutoTargeting)
+                    if (Weapons[WeaponID].Data.IsAutoTargeting)
                     {
                         GameObject Target = GetTarget(5);
                         if (Target != null)
@@ -85,8 +85,8 @@ public class Shooting : MonoBehaviour
 
             for (int a = 0; a < targets.Length; a++)
             {
-               // Debug.Log(targets[a]);
-              if(StaticDataManager.instance.isOkTarget(IsPlayer,targets[a].tag))
+                // Debug.Log(targets[a]);
+                if (StaticDataManager.instance.isOkTarget(IsPlayer, targets[a].tag))
                 {// Debug.LogError(Vector2.Distance(targets[a].transform.position, transform.position) + " " + dist);
 
                     if (Vector2.Distance(targets[a].transform.position, transform.position) <= dist)
@@ -119,9 +119,10 @@ public class Shooting : MonoBehaviour
 
                 if (Input.GetKey(Weapons[i].FireButton))
                 {
-
-                    Shoot(i);
-
+                    if (StaticDataManager.instance.CombatMode)
+                    {
+                        Shoot(i);
+                    }
                 }
             }
         }

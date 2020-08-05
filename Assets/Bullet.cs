@@ -33,7 +33,8 @@ public class Bullet : MonoBehaviour
         Invoke("ActivateDestroy", Data.RangeInSeconds);
         if (Data.IsHoming|| Data.IsAutoTargeting)
         {
-
+            r2d.drag = 1f;
+            r2d.angularDrag = 1f;
             StartCoroutine("home");
         }
 
@@ -52,7 +53,8 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((Input.mousePosition.y - transform.position.y), (Input.mousePosition.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * Data.HomingRotation);
+                Vector3 v3 = Camera.main.ViewportToWorldPoint(Input.mousePosition);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((v3.y - transform.position.y), (v3.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * Data.HomingRotation);
 
             }
             r2d.AddForce(gameObject.transform.up * Data.HomingSpeed);

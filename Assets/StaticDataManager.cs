@@ -7,11 +7,13 @@ public class StaticDataManager : MonoBehaviour
 {
     public GameObject DieExplosion;
     public GameObject BulletBase;
+    public GameObject CSOInfo;
     public List<string> GoodTags= new List<string>();
     public List<string> NeutralTags = new List<string>();
     public List<string> EnemyTags = new List<string>();
     public List<string> IgnoreTags = new List<string>();
-
+    public bool CombatMode=false;
+    public GameObject CombatModeDisplay;
     public static StaticDataManager instance;
     public void Awake()
     {
@@ -25,7 +27,16 @@ public class StaticDataManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-       
+        CombatModeDisplay.SetActive(CombatMode);
+
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CombatMode = !CombatMode;
+            CombatModeDisplay.SetActive(CombatMode);
+        }
     }
     public bool isOkTarget(bool IsPlayer,string tag)
     {

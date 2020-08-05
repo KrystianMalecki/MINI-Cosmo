@@ -27,10 +27,10 @@ MonoBehaviour:
   Size: 0.1
   IsPiercing: 0
   PierceCount: 1
-  IsHoming: 0
+  IsHoming: 1
   IsAutoTargeting: 0
-  HomingSpeed: 500
-  HomingRotation: 1000
+  HomingSpeed: 50
+  HomingRotation: 100
   IsExplosive: 0
   ExplosionRange: 0
   ExplosionEffect: {fileID: 0}
