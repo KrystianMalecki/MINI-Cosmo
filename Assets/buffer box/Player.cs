@@ -20,7 +20,7 @@ public class Player : ScriptedEntity
         Vector2 newPosition = new Vector2(transform.position.x, transform.position.y);
         float nextX = Mathf.Round(32 * newPosition.x);
         float nextY = Mathf.Round(32 * newPosition.y);
-        Camera.main.transform.position = new Vector3(nextX / 32, nextY / 32, -10);
+        Camera.main.transform.position = new Vector3(nextX / 32, nextY / 32, -100);
     }
     public void Update()
     {

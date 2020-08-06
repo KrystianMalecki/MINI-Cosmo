@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-#if UnityEditor
+
 [Serializable]
 public class TextNode : Node
 {
 
-
+#if UNITY_EDITOR
     public TextNodeData data ;
     public override void NodeSetup(Vector2 position, string nodeInfo,int idd, List<int> resids) 
     {
@@ -113,5 +113,5 @@ public class TextNodeData
         text = "[DIALOGUE TEXT]";
         reponse = "[RESPONSE]";
     }
-}
 #endif
+}

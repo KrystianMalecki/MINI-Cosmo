@@ -27,7 +27,7 @@ MonoBehaviour:
   Size: 0.1
   IsPiercing: 0
   PierceCount: 1
-  IsHoming: 1
+  IsHoming: 0
   IsAutoTargeting: 0
   HomingSpeed: 50
   HomingRotation: 100

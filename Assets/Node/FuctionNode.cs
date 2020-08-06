@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-#if UnityEditor
+
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEditorInternal;
 using UnityEngine;
@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 [Serializable]
 public class FunctionNode : Node
 {
-
+#if UNITY_EDITOR
     public SerializedObject so;
     public SerializedProperty sp;
     public UnityEvent onActivate = new UnityEvent();
@@ -88,6 +88,6 @@ public class FunctionNodeData
         cond_json = JsonUtility.ToJson(c);
         //  Debug.Log("packed"+cond_json);
     }
+#endif
 }
 
-#endif

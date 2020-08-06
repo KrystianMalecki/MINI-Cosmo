@@ -1,18 +1,24 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
-#if UnityEditor
+
 public class Connection
 {
+#if UNITY_EDITOR
     public ConnectionPoint inPoint;
     public ConnectionPoint outPoint;
-   
+    public Color color = Color.white;
     public Connection(ConnectionPoint inPoint, ConnectionPoint outPoint)
     {
         this.inPoint = inPoint;
         this.outPoint = outPoint;
     }
-
+    public Connection(ConnectionPoint inPoint, ConnectionPoint outPoint,Color c)
+    {
+        this.inPoint = inPoint;
+        this.outPoint = outPoint;
+        color = c;
+    }
     public void Draw()
     {
         Handles.DrawBezier(
@@ -20,7 +26,7 @@ public class Connection
             outPoint.rect.center,
             inPoint.rect.center + Vector2.left * 50f,
             outPoint.rect.center - Vector2.left * 50f,
-            Color.white,
+            color,
             null,
             2f
         );
@@ -34,5 +40,5 @@ public class Connection
         }
 
     }
-}
 #endif
+}

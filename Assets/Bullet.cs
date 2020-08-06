@@ -39,6 +39,7 @@ public class Bullet : MonoBehaviour
         }
 
     }
+   
     IEnumerator home()
     {
         while (true)

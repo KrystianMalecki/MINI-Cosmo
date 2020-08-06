@@ -13,7 +13,6 @@ public class StaticDataManager : MonoBehaviour
     public List<string> EnemyTags = new List<string>();
     public List<string> IgnoreTags = new List<string>();
     public bool CombatMode=false;
-    public GameObject CombatModeDisplay;
     public static StaticDataManager instance;
     public void Awake()
     {
@@ -27,15 +26,20 @@ public class StaticDataManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        CombatModeDisplay.SetActive(CombatMode);
+        setCombatMode(true);
 
     }
-    public void Update()
+    public void setCombatMode(bool t)
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        CombatMode = t;
+        if (CombatMode)
         {
-            CombatMode = !CombatMode;
-            CombatModeDisplay.SetActive(CombatMode);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 0.05f;
+
         }
     }
     public bool isOkTarget(bool IsPlayer,string tag)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEditor;
-#if UnityEditor
+#if UNITY_EDITOR
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEditorInternal;
 using UnityEngine.Events;
@@ -24,7 +24,7 @@ public class IfNode : Node
     public override void NodeSetup(Vector2 position, string nodeInfo,int idd, List<int> resids)
     {
         base.NodeSetup(position, nodeInfo,idd,resids);
-        rect = new Rect(rect.position, new Vector2(300, 85));
+        rect = new Rect(rect.position, new Vector2(340, 85));
         NodeDataSaver.type = NodeType.If;
 
         if (nodeInfo == "")
@@ -36,8 +36,14 @@ public class IfNode : Node
 
             condition = JsonUtility.FromJson<Condition>(data.cond_json);
         }
-       
-        outPoints.Add(new ConnectionPoint(this, ConnectionPointType.Out, 10), NodeDataSaver.getResID(0));
+        ConnectionPoint cp1 = new ConnectionPoint(this, ConnectionPointType.Out, 10);
+        ConnectionPoint cp2 = new ConnectionPoint(this, ConnectionPointType.Out, 50);
+        cp1.state = 1;
+        cp2.state = 2;
+
+        outPoints.Add(cp1, NodeDataSaver.getResID(0));
+        outPoints.Add(cp2, NodeDataSaver.getResID(1));
+
         so = new SerializedObject(this);
         sp = so.FindProperty("condition");
        
@@ -64,15 +70,15 @@ public class IfNode : Node
         inPoint.Draw();
 
         GUI.Box(rect, title, style);
-        if (this == null)
-        {
-            Debug.LogError("huj");
-        }
+        GUI.Label(new Rect(rect.position+new Vector2(300,10),new Vector2(40,20)), "true");
+        GUI.Label(new Rect(rect.position + new Vector2(300, 50), new Vector2(40, 20)), "false");
         so.Update();
 
         EditorGUI.PropertyField(new Rect(rect.position + new Vector2(10, 10), new Vector2(280, 60)), sp);
 
         outPoints.ElementAt(0).Key.Draw();
+        outPoints.ElementAt(1).Key.Draw();
+
         so.ApplyModifiedProperties();
     }
 

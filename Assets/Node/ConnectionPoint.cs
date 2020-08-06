@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
-#if UnityEditor
+
 public enum ConnectionPointType { In, Out }
 
 public class ConnectionPoint
 {
+#if UNITY_EDITOR
     public Rect rect;
 
     public ConnectionPointType type;
@@ -15,6 +16,7 @@ public class ConnectionPoint
     public GUIStyle style;
 
     public int pos;
+    public int state = 0;
     public void SetupStyle(ConnectionPointType type)
     {
         if (type == ConnectionPointType.In)
@@ -38,7 +40,7 @@ public class ConnectionPoint
         this.node = node;
         this.type = type;
 
-        rect = new Rect(0, 0, 10f, 20f);
+        rect = new Rect(0, 0, 15f, 20f);
         pos = offset;
     }
 
@@ -56,7 +58,15 @@ public class ConnectionPoint
                 rect.x = node.rect.x + node.rect.width - 8f;
                 break;
         }
+        if(state == 1)
+        {
+            GUI.color = Color.green;
 
+        }
+        else if (state == 2)
+        {
+            GUI.color = Color.red;
+        }
         if (GUI.Button(rect, "", style))
         {
             if (NodeBasedEditor.window != null)
@@ -64,6 +74,7 @@ public class ConnectionPoint
                 NodeBasedEditor.window.OnClickPoint(this);
             }
         }
+        GUI.color = Color.white;
     }
-}
 #endif
+}

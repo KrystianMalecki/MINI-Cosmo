@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System;
 using System.Net.NetworkInformation;
 
-public enum NodeType { Text,Function,If }
-#if UnityEditor
+public enum NodeType { Text, Function, If }
+
 public class NodeBasedEditor : EditorWindow
 {
     public List<Node> nodes = new List<Node>();
@@ -24,8 +24,8 @@ public class NodeBasedEditor : EditorWindow
     [MenuItem("Window/Node Based Editor")]
     private static void OpenWindow()
     {
-         window = GetWindow<NodeBasedEditor>();
-       
+        window = GetWindow<NodeBasedEditor>();
+
         window.titleContent = new GUIContent("Node Based Editor");
 
     }
@@ -37,18 +37,19 @@ public class NodeBasedEditor : EditorWindow
         sp = so.FindProperty("nps");
         LoadData();
     }
+#if UNITY_EDITOR
     private void LoadData()
     {
         if (nps != null)
         {
             nps.loader();
-                if (nodes == null)
-                {
-                    nodes = new List<Node>();
-                }
-                nodes.Clear();
-                NodePack np = new NodePack();
-                np = nps.NodePack;
+            if (nodes == null)
+            {
+                nodes = new List<Node>();
+            }
+            nodes.Clear();
+            NodePack np = new NodePack();
+            np = nps.NodePack;
             if (nodes != null)
             {
 
@@ -65,11 +66,11 @@ public class NodeBasedEditor : EditorWindow
                     n.addCon(this);
                 }
             }
-                
-                // nodes = np.nodes;
 
-            
-          
+            // nodes = np.nodes;
+
+
+
         }
     }
     private void OnGUI()
@@ -85,17 +86,17 @@ public class NodeBasedEditor : EditorWindow
         ProcessEvents(Event.current);
         so.Update();
         EditorGUI.BeginChangeCheck();
-        EditorGUI.PropertyField(new Rect(160,10, 280, 20), sp);
+        EditorGUI.PropertyField(new Rect(160, 10, 280, 20), sp);
         so.ApplyModifiedProperties();
 
         if (EditorGUI.EndChangeCheck())
         {
             LoadData();
         }
-     //   so.ApplyModifiedProperties();
+        //   so.ApplyModifiedProperties();
         if (GUI.Button(new Rect(10, 10, 150, 20), "Remove Selected"))
         {
-            for(int a = 0; a < nodes.Count; a++)
+            for (int a = 0; a < nodes.Count; a++)
             {
                 if (nodes[a].isSelected)
                 {
@@ -105,9 +106,9 @@ public class NodeBasedEditor : EditorWindow
             }
         }
         select_multiple = GUI.Toggle(new Rect(10, 30, 150, 20), select_multiple, "Select multiple");
-       
-            
-        
+
+
+
 
         if (GUI.changed) Repaint();
     }
@@ -137,7 +138,7 @@ public class NodeBasedEditor : EditorWindow
         Handles.EndGUI();
     }
 
-    private void AddNewNode(NodeType type, Vector2 pos,  string s, List<int> ids)
+    private void AddNewNode(NodeType type, Vector2 pos, string s, List<int> ids)
     {
         if (nodes == null)
         {
@@ -149,7 +150,7 @@ public class NodeBasedEditor : EditorWindow
                 {
                     TextNode tn = CreateInstance<TextNode>();
                     tn.NodeSetup(pos, s, nodes.Count, ids);
-                  nodes.Add(tn);
+                    nodes.Add(tn);
 
                     break;
                 }
@@ -273,7 +274,7 @@ public class NodeBasedEditor : EditorWindow
     private void ProcessContextMenu(Vector2 mousePosition)
     {
         GenericMenu genericMenu = new GenericMenu();
-        genericMenu.AddItem(new GUIContent("Add Text Node"), false, () => AddNewNode(NodeType.Text, mousePosition, "",new List<int>()));
+        genericMenu.AddItem(new GUIContent("Add Text Node"), false, () => AddNewNode(NodeType.Text, mousePosition, "", new List<int>()));
         genericMenu.AddItem(new GUIContent("Add Function Node"), false, () => AddNewNode(NodeType.Function, mousePosition, "", new List<int>()));
         genericMenu.AddItem(new GUIContent("Add If Node"), false, () => AddNewNode(NodeType.If, mousePosition, "", new List<int>()));
 
@@ -297,7 +298,7 @@ public class NodeBasedEditor : EditorWindow
 
     public void OnClickPoint(ConnectionPoint cp)
     {
-        if(cp.type == ConnectionPointType.In)
+        if (cp.type == ConnectionPointType.In)
         {
             OnClickInPoint(cp);
         }
@@ -331,9 +332,9 @@ public class NodeBasedEditor : EditorWindow
 
         if (selectedInPoint != null)
         {
-            if (selectedOutPoint.node != selectedInPoint.node&&selectedOutPoint.conectedto==null)
+            if (selectedOutPoint.node != selectedInPoint.node && selectedOutPoint.conectedto == null)
             {
-                CreateConnection(selectedInPoint,selectedOutPoint);
+                CreateConnection(selectedInPoint, selectedOutPoint);
                 ClearConnectionSelection();
             }
             else
@@ -351,7 +352,7 @@ public class NodeBasedEditor : EditorWindow
 
             for (int i = 0; i < connections.Count; i++)
             {
-                if (connections[i].inPoint == node.inPoint ||  node.outPoints.ContainsKey(connections[i].outPoint)||connections[i].inPoint.node.id== node.id || connections[i].outPoint.node.id == node.id)
+                if (connections[i].inPoint == node.inPoint || node.outPoints.ContainsKey(connections[i].outPoint) || connections[i].inPoint.node.id == node.id || connections[i].outPoint.node.id == node.id)
                 {
                     connectionsToRemove.Add(connections[i]);
                 }
@@ -366,7 +367,7 @@ public class NodeBasedEditor : EditorWindow
         }
 
         nodes.Remove(node);
-        for(int a=0; a < nodes.Count; a++)
+        for (int a = 0; a < nodes.Count; a++)
         {
             nodes[a].id = a;
         }
@@ -387,7 +388,20 @@ public class NodeBasedEditor : EditorWindow
         }
         outer.conectedto = iner.node;
         outer.node.outPoints[outer] = iner.node.id;
-        connections.Add(new Connection(iner, outer));
+        if (outer.state == 1)
+        {
+            connections.Add(new Connection(iner, outer,Color.green));
+
+        }
+        else if (outer.state == 2)
+        {
+            connections.Add(new Connection(iner, outer,Color.red));
+
+        }
+        else
+        {
+            connections.Add(new Connection(iner, outer));
+        }
     }
 
     private void ClearConnectionSelection()
@@ -406,8 +420,8 @@ public class NodeBasedEditor : EditorWindow
 
         nps.NodePack = np;
         nps.saver();
-       // PlayerPrefs.SetString("nodes", s);
+        // PlayerPrefs.SetString("nodes", s);
         window = null;
     }
-}
 #endif
+}

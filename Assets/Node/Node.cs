@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-#if UnityEditor
+
 [Serializable]
 public class Node : ScriptableObject
 {
+#if UNITY_EDITOR
     public int id;
     public Rect rect;
     public string title = "";
@@ -175,11 +176,12 @@ public class Node : ScriptableObject
         nds.data = ToJson();
         return nds;
     }
+#endif
 }
 
 
 
-#endif
+
 [Serializable]
 public class NodeDataSaver
 {
@@ -206,4 +208,5 @@ public class NodeDataSaver
         }
         return ResponseID[id];
     }
-}
+
+    }

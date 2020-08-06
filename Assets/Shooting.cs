@@ -20,7 +20,7 @@ public class Shooting : MonoBehaviour
     private GameObject BulletBase;
     public Rigidbody2D ShipR2D;
     public ScriptedEntity Shooter;
-
+    public Homingv2 homingsc;
     public void Start()
     {
         BulletBase = StaticDataManager.instance.BulletBase;
@@ -50,7 +50,7 @@ public class Shooting : MonoBehaviour
                     bulletCode.Create();
                     if (Weapons[WeaponID].Data.IsAutoTargeting)
                     {
-                        GameObject Target = GetTarget(5);
+                        GameObject Target = homingsc.Target;
                         if (Target != null)
                         {
                             bulletCode.Target = Target;
@@ -75,7 +75,7 @@ public class Shooting : MonoBehaviour
 
         }
     }
-    public GameObject GetTarget(float radius)
+  /*  public GameObject GetTarget(float radius)
     {
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, radius);
         if (targets.Length > 0)
@@ -100,7 +100,7 @@ public class Shooting : MonoBehaviour
             return targets[distPos].gameObject;
         }
         return null;
-    }
+    }*/
     public void Update()
     {
         for (int i = 0; i < Weapons.Count; i++)
@@ -127,7 +127,7 @@ public class Shooting : MonoBehaviour
             }
         }
     }
-    public void OnDrawGizmosSelected()
+   /* public void OnDrawGizmosSelected()
     {
 #if UNITY_EDITOR
 
@@ -138,5 +138,5 @@ public class Shooting : MonoBehaviour
 
 
 #endif
-    }
+    }*/
 }
