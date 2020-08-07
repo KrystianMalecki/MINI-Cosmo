@@ -8,10 +8,10 @@ public class UIManager : MonoBehaviour
 {
     public float animtime=1f;
     public Animator anim;
-    public UIDictionary UIdictionary;
+    public UIDictionary UI_dictionary;
     public void Start()
     {
-        foreach (KeyValuePair<string, UIBase> kvp in UIdictionary)
+        foreach (KeyValuePair<string, UIBase> kvp in UI_dictionary)
         {
             kvp.Value.CloseThis();
         }
@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     public UIBase GetMenu(string s)
     {
         UIBase uib = null;
-        UIdictionary.TryGetValue(s, out uib);
+        UI_dictionary.TryGetValue(s, out uib);
         return uib;
     }
     public UIBase OpenMenu(string s)

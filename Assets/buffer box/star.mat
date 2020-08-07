@@ -43,6 +43,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: bd9bcf76420b838449f93d7e1ea11fa9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _mask:
+        m_Texture: {fileID: 2800000, guid: ff9193659aa7820488ebbfbfc79c92c4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_12763C06: 15
     - Vector1_53A4598E: 0.454
@@ -50,6 +54,10 @@ Material:
     - Vector1_6DFBE429: 5
     - Vector1_EB4B75AD: 227.4
     - _EnableExternalAlpha: 0
+    - _high: 0
+    - _pix_num: 32
+    - _scale: 2
+    - _sphereize_power: 15
     m_Colors:
     - Color_1566C295: {r: 2.745098, g: 2.9960785, b: 0, a: 1}
     - Color_26BD1176: {r: 2.9960785, g: 1.0352942, b: 0, a: 1}
@@ -60,4 +68,10 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _color1: {r: 2.9960785, g: 0.20392157, b: 0, a: 1}
+    - _color2: {r: 4.5412054, g: 3.3048563, b: 0, a: 1}
+    - _color3: {r: 2.9960785, g: 0, b: 0, a: 1}
+    - _noises: {r: 10, g: -1, b: -1, a: -1}
+    - _rotation_speed: {r: 0, g: 0, b: 0, a: 0}
+    - _start_offset: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

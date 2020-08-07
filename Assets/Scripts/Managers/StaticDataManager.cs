@@ -13,6 +13,7 @@ public class StaticDataManager : MonoBehaviour
     public List<string> EnemyTags = new List<string>();
     public List<string> IgnoreTags = new List<string>();
     public bool CombatMode=false;
+    public GameObject ParticleBase;
     public static StaticDataManager instance;
     public void Awake()
     {

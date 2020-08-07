@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Player : ScriptedEntity
+public class Player : ScriptedEntity, ICollector
 {
     public bool RelativeMovement;
     public Text hptxt;
-
+    public float collect_speed=10;
     public override void Damage(float value)
     {
         base.Damage(value);
@@ -60,5 +60,21 @@ public class Player : ScriptedEntity
 
         }
     }
-   
+
+    public float get_collection_speed()
+    {
+        return collect_speed;
+    }
+
+    public bool Collect(ItemData it)
+    {
+     return Inventory.instance.AddItem(it.id, it.count);
+        
+    }
+}
+public interface ICollector
+{
+     float get_collection_speed();
+     bool Collect(ItemData it);
+
 }

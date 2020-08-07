@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_7E923C7A:
-        m_Texture: {fileID: 2800000, guid: b8ad21244a3e0e44ebffda3603747b93, type: 3}
+        m_Texture: {fileID: 2800000, guid: 15a0349b0d8d22143b572a93f3a6fec3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
@@ -43,6 +43,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: bd9bcf76420b838449f93d7e1ea11fa9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _mask:
+        m_Texture: {fileID: 2800000, guid: ff9193659aa7820488ebbfbfc79c92c4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_12763C06: 15
     - Vector1_53A4598E: 0.508
@@ -50,6 +54,10 @@ Material:
     - Vector1_6DFBE429: 5
     - Vector1_EB4B75AD: 227.4
     - _EnableExternalAlpha: 0
+    - _high: 0
+    - _pix_num: 32
+    - _scale: 7
+    - _sphereize_power: 15
     m_Colors:
     - Color_1566C295: {r: 0.3349069, g: 0.025943398, b: 0.5, a: 0}
     - Color_26BD1176: {r: 0.46226418, g: 0.15937154, b: 0.023985408, a: 0}
@@ -60,4 +68,10 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _color1: {r: 0, g: 0, b: 0, a: 0}
+    - _color2: {r: 0, g: 0, b: 0, a: 0}
+    - _color3: {r: 0, g: 0, b: 0, a: 0}
+    - _noises: {r: 2, g: 6, b: -1, a: -1}
+    - _rotation_speed: {r: 0, g: 0, b: 0, a: 0}
+    - _start_offset: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
