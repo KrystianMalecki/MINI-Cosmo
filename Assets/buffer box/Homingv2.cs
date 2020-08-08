@@ -24,9 +24,13 @@ public class Homingv2 : MonoBehaviour
         }
 
     }
+    public void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
     public void Start()
     {
-        StartCoroutine(HomeTick());
+        StartCoroutine("HomeTick");
     }
     IEnumerator HomeTick()
     {

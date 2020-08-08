@@ -10,7 +10,7 @@ public class Item : ScriptableObject
     public Sprite texture;
 
     public float value;
-    public bool stackable;
+    public bool isStackable;
     public string data;
    
 }

@@ -8,18 +8,32 @@ using System;
 public enum ParticleShapeType { Ring, Sphere }
 public class PGS : MonoBehaviour
 {
+#if UNITY_EDITOR
+    private List<Color> colos = new List<Color> { Color.red, Color.yellow, Color.green, Color.cyan, Color.blue, Color.magenta };
+#endif
     public PlanetGraphicsData PGD;
     public GameObject InfoCross;
     public SpriteRenderer PlanetTextureRenderer;
     public List<GameObject> ParticlesMade = new List<GameObject>();
+    public List<GameObject> ObitersMade = new List<GameObject>();
+
     public void SetupData()
     {
         if (ParticlesMade.Count > 0)
         {
-            for(int a = 0; a < ParticlesMade.Count; a++)
+            for (int a = 0; a < ParticlesMade.Count; a++)
             {
                 Destroy(ParticlesMade[a]);
                 ParticlesMade.RemoveAt(a);
+                a--;
+            }
+        }
+        if (ObitersMade.Count > 0)
+        {
+            for (int a = 0; a < ObitersMade.Count; a++)
+            {
+                Destroy(ObitersMade[a]);
+                ObitersMade.RemoveAt(a);
                 a--;
             }
         }
@@ -32,7 +46,7 @@ public class PGS : MonoBehaviour
         mat.SetColor("_color3", PGD.color3);
         mat.SetFloat("_pix_num", PGD.size * 32);
         mat.SetVector("_start_offset", new Vector4(UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f)));
-        mat.SetVector("_rotation_speed", new Vector4(UnityEngine.Random.Range(-PGD.rotation_speed_range, PGD.rotation_speed_range), UnityEngine.Random.Range(-PGD.rotation_speed_range, PGD.rotation_speed_range)));
+        mat.SetVector("_rotation_speed", PGD.rotation_speed);
         mat.SetFloat("_high", PGD.high_add);
         mat.SetVector("_noises", PGD.noise_layers_scales);
         PlanetTextureRenderer.material = mat;
@@ -42,9 +56,7 @@ public class PGS : MonoBehaviour
             GameObject go = Instantiate(StaticDataManager.instance.ParticleBase, transform);
             ParticlesMade.Add(go);
             go.transform.rotation = Quaternion.Euler(
-                UnityEngine.Random.Range(particledata.ring_rotation_range.x, particledata.ring_rotation_range.y),
-                  UnityEngine.Random.Range(particledata.ring_rotation_range.x, particledata.ring_rotation_range.y),
-                  UnityEngine.Random.Range(particledata.ring_rotation_range.x, particledata.ring_rotation_range.y));
+               particledata.ring_rotation);
             ParticleSystem ps = go.GetComponent<ParticleSystem>();
             ps.Stop();
             foreach (Sprite spr in particledata.random_sprites)
@@ -56,8 +68,8 @@ public class PGS : MonoBehaviour
             var sf = tsa.startFrame;
             sf.mode = ParticleSystemCurveMode.TwoConstants;
             sf.constantMin = 0;
-           // Debug.LogError(particledata.random_sprites.Count);
-            sf.constantMax = Mathf.CeilToInt( particledata.random_sprites.Count);
+            // Debug.LogError(particledata.random_sprites.Count);
+            sf.constantMax = Mathf.CeilToInt(particledata.random_sprites.Count);
             tsa.startFrame = sf;
             var ss = main.startSize;
             ss.constantMin = particledata.size_range.x;
@@ -80,9 +92,9 @@ public class PGS : MonoBehaviour
             else if (particledata.PStype == ParticleShapeType.Sphere)
             {
                 shape.shapeType = ParticleSystemShapeType.Sphere;
-                volt.orbitalZ = UnityEngine.Random.Range(-particledata.rotation_direction_ranges.z, particledata.rotation_direction_ranges.z);
-                volt.orbitalX = UnityEngine.Random.Range(-particledata.rotation_direction_ranges.x, particledata.rotation_direction_ranges.x);
-                volt.orbitalY = UnityEngine.Random.Range(-particledata.rotation_direction_ranges.y, particledata.rotation_direction_ranges.y);
+                volt.orbitalZ = particledata.rotation_direction.z;
+                volt.orbitalX = particledata.rotation_direction.x;
+                volt.orbitalY = particledata.rotation_direction.y;
 
             }
 
@@ -101,6 +113,40 @@ public class PGS : MonoBehaviour
             solt.size = new ParticleSystem.MinMaxCurve(1, particledata.size_OLT_curve);
             ps.Play();
         }
+        foreach (OrbiterPGD orbdata in PGD.orbiters)
+        {
+            GameObject orbiterer = Instantiate(StaticDataManager.instance.OrbiterBase, transform.position, Quaternion.identity);
+            orbiterer.transform.Translate(new Vector3( orbdata.axis.normalized.z, orbdata.axis.normalized.x, orbdata.axis.normalized.y) * orbdata.distance);
+            orbiterer.transform.parent = gameObject.transform;
+            orbiterer.transform.localScale = orbdata.size;
+
+            Orbiter orbiterscr = orbiterer.GetComponent<Orbiter>();
+            orbiterscr.target = gameObject.transform;
+            orbiterscr.axis = orbdata.axis;
+            orbiterscr.smallerer = true;
+            orbiterscr.speed = orbdata.speed;
+            SpriteRenderer sr = orbiterer.GetComponent<SpriteRenderer>();
+            sr.sprite = orbdata.sprite;
+           Material m = Instantiate(sr.material);
+            m.SetColor("_color", orbdata.color);
+            sr.material = m;
+            orbiterscr.setdis();
+            ObitersMade.Add(orbiterer);
+        }
+    }
+    public void OnDrawGizmos()
+    {
+#if UNITY_EDITOR
+        int a = 0;
+        foreach (OrbiterPGD orb in PGD.orbiters)
+        {
+            Handles.color = colos[a%colos.Count];
+
+            Handles.DrawWireDisc(transform.position, orb.axis.normalized, orb.distance);
+            a++;
+        }
+
+#endif
     }
 }
 [System.Serializable]
@@ -109,8 +155,7 @@ public class PlanetGraphicsData
     [Header("Main Info")]
     [Range(0.1f, 20)]
     public float size;
-    [Range(0, 5f)]
-    public float rotation_speed_range;
+    public Vector3 rotation_speed;
     [Range(0f, 1f)]
     public float high_add;
     [Header("-1 to disable layer")]
@@ -125,6 +170,9 @@ public class PlanetGraphicsData
     public Color color3;
     [Header("Particles")]
     public List<ParticlePGD> particle_layers = new List<ParticlePGD>();
+    [Header("Orbiters")]
+    public List<OrbiterPGD> orbiters = new List<OrbiterPGD>();
+
 }
 [System.Serializable]
 public class ParticlePGD
@@ -142,17 +190,29 @@ public class ParticlePGD
     public float radius_thickness;
 
     public Vector3 scale;
-    [ConditionalField("PStype", ParticleShapeType.Ring)] public Vector2 ring_rotation_range = new Vector2(0, 0);
+    [ConditionalField("PStype", ParticleShapeType.Ring)] public Vector3 ring_rotation = new Vector3(0, 0,0);
 
-    [Header("rotation_direction_ranges should be in range of 0f-1f")]
-    [ConditionalField("PStype", ParticleShapeType.Sphere)] public Vector3 rotation_direction_ranges;
+    [ConditionalField("PStype", ParticleShapeType.Sphere)] public Vector3 rotation_direction;
     public Vector2 rotation_speed_range;
     [Header("Over Lifetime")]
     public AnimationCurve size_OLT_curve;
     public Gradient color_OLT;
 }
+[System.Serializable]
+public class OrbiterPGD
+{
+    [Header("name is purely for a visual in inspector")]
+    public string name;
+    public Sprite sprite;
+    public Vector2 size;
+    [ColorUsage(true, true)]
+    public Color color;
+    public float speed;
+    public Vector3 axis;
+    public float distance;
+}
 [CustomEditor(typeof(PGS))]
-public class Editor0 : Editor
+public class EditorPGS : Editor
 {
     public override void OnInspectorGUI()
     {

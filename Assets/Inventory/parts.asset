@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbc98b24ead030246b7db58d14ac2267, type: 3}
-  m_Name: Scrap
+  m_Name: parts
   m_EditorClassIdentifier: 
-  name: Scrap
-  texture: {fileID: 21300000, guid: 350cf195bac371d4982330e9857290dd, type: 3}
-  value: 5
-  isStackable: 1
+  name: parts
+  texture: {fileID: 21300000, guid: ba8891a99f41fa34e85146a7495e1113, type: 3}
+  value: 10
+  isStackable: 0
   data: 

@@ -22,13 +22,13 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!GetMenu("Menu").IsOpen)
+            if (!GetMenu("Inventory").IsOpen)
             {
-                OpenMenu("Menu");
+                OpenMenu("Inventory");
             }
             else
             {
-                CloseMenu("Menu");
+                CloseMenu("Inventory");
 
             }
         }
@@ -49,8 +49,9 @@ public class UIManager : MonoBehaviour
     public UIBase CloseMenu(string s)
     {
         UIBase uib = GetMenu(s);
-        StartCoroutine(Cwait(uib));
         CloseMenuTime();
+
+        StartCoroutine(Cwait(uib));
         return uib;
     }
     public IEnumerator Cwait(UIBase uib)

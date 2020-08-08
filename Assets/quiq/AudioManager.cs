@@ -62,7 +62,11 @@ public class AudioManager : MonoBehaviour
 			s.source.Play();
 		}
 	}
-	public void Play(Sound s)
+    public void Start()
+    {
+		Play("zipzap");
+    }
+    public void Play(Sound s)
 	{
 
 		if (!sounds.Contains(s))

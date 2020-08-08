@@ -14,6 +14,7 @@ public class StaticDataManager : MonoBehaviour
     public List<string> IgnoreTags = new List<string>();
     public bool CombatMode=false;
     public GameObject ParticleBase;
+    public GameObject OrbiterBase;
     public static StaticDataManager instance;
     public void Awake()
     {

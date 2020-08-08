@@ -173,7 +173,7 @@ public class Bullet : MonoBehaviour
                  srr.material = m;
 
              }*/
-            Destroy(go, 3f);
+           // Destroy(go, 3f);
         }
 
 

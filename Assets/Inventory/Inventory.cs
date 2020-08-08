@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            if (i.stackable)
+            if (i.isStackable)
             {
                 items[index].count += num;
             }
