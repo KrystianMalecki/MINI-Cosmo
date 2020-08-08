@@ -45,7 +45,10 @@ public class Shooting : MonoBehaviour
                     bullet.transform.Rotate(new Vector3(0f, 0f, UnityEngine.Random.Range(-Weapons[WeaponID].Data.Inaccuracity, Weapons[WeaponID].Data.Inaccuracity)));
                     Bullet bulletCode = bullet.GetComponent<Bullet>();
                     bulletCode.CanAttackPlayer = !IsPlayer;
-
+                    if (Weapons[WeaponID].Data.HasFireSound)
+                    {
+                        AudioManager.instance.Play(Weapons[WeaponID].Data.FireSound);
+                    }
                     bulletCode.Data = Weapons[WeaponID].Data;
                     bulletCode.Create();
                     if (Weapons[WeaponID].Data.IsAutoTargeting)

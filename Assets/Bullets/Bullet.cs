@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Audio;
 public class Bullet : MonoBehaviour
 {
     public bool OtherData;
@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     public SpriteRenderer SR;
     public void Create()
     {
+        
         if (Data.AdditionalEffect != null)
         {
             GameObject g = Instantiate(Data.AdditionalEffect, transform);

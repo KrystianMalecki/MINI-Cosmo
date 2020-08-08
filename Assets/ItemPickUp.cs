@@ -10,18 +10,15 @@ public class ItemPickUp : MonoBehaviour
     public ICollector icoll;
     public void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.LogError(col.name + "0");
         if(!col.isTrigger)
         {
-            Debug.LogError(col.name+"1");
+
 
             if (StaticDataManager.instance.isOkTarget(false, col.tag))
             {
-                Debug.LogError(col.name + "2");
 
                 if (col.gameObject.GetComponent<ICollector>() != null)
                 {
-                    Debug.LogError(col.name + "3");
 
                     go = col.gameObject;
                     icoll = col.gameObject.GetComponent<ICollector>();

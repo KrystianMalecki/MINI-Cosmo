@@ -20,10 +20,10 @@ MonoBehaviour:
   Speed: 50
   FireRate: 5
   Cost: 1
-  Inaccuracity: 0
+  Inaccuracity: 10
   BulletCount: 1
   Knockback: 0
-  Recoil: 0
+  Recoil: 50
   Size: 0.1
   IsPiercing: 0
   PierceCount: 1
@@ -36,7 +36,5 @@ MonoBehaviour:
   ExplosionEffect: {fileID: 0}
   Laser: 0
   placeholder: 0
-  IfBulletSound: 0
-  BulletSound: {fileID: 0}
-  IfFireSound: 0
-  FireSound: {fileID: 0}
+  HasFireSound: 0
+  FireSound: {fileID: 11400000, guid: 083932f272aa6bb4292064509ca20e7b, type: 2}

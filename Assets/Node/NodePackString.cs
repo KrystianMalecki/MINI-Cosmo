@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 [Serializable]
-[CreateAssetMenu(fileName = "New NodePackString", menuName = "NodePackString")]
+[CreateAssetMenu(fileName = "New NodePackString", menuName = "Custom/NodePackString")]
 
 public class NodePackString : ScriptableObject
 {

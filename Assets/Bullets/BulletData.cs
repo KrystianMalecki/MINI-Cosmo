@@ -5,7 +5,7 @@ using Attributes;
 using System;
 using UnityEngine.Audio;
 [Serializable]
-[CreateAssetMenu(fileName = "New BulletData", menuName = "BulletData")]
+[CreateAssetMenu(fileName = "New BulletData", menuName = "Custom/BulletData")]
 public class BulletData : ScriptableObject
 {
     [Header("Bullet Graphics")]
@@ -45,10 +45,9 @@ public class BulletData : ScriptableObject
     public bool Laser;
     [ConditionalField("Laser")] public float placeholder;
     [Header("Sound")]
-    public bool IfBulletSound;
-    [ConditionalField("IfBulletSound")] public AudioClip BulletSound;
-    public bool IfFireSound;
-    [ConditionalField("IfFireSound")] public AudioClip FireSound;
+
+    public bool HasFireSound;
+    [ConditionalField("HasFireSound")] public Sound FireSound;
 
 
 

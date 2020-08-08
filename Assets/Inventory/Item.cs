@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 [Serializable]
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Custom/Item")]
 public class Item : ScriptableObject
 {
     public string name;
@@ -11,6 +11,8 @@ public class Item : ScriptableObject
 
     public float value;
     public bool stackable;
+    public string data;
+   
 }
 [Serializable]
 public class ItemData
