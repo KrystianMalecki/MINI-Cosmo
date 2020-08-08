@@ -866,7 +866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PGD:
     size: 1
-    rotation_speed_range: 0.5
+    rotation_speed: {x: 0, y: 0, z: 0}
     high_add: 0.5
     noise_layers_scales: {x: 2, y: 6, z: -1, w: -1}
     color1: {r: 0.19610427, g: 0.13843894, b: 0.4811321, a: 1}
@@ -911,8 +911,8 @@ MonoBehaviour:
       radius: 1
       radius_thickness: 0
       scale: {x: 0.5, y: 0.5, z: 0.5}
-      ring_rotation_range: {x: 0, y: 0}
-      rotation_direction_ranges: {x: 1, y: 1, z: 1}
+      ring_rotation: {x: 0, y: 0, z: 0}
+      rotation_direction: {x: 0, y: 0, z: 0}
       rotation_speed_range: {x: 0.4, y: 1.6}
       size_OLT_curve:
         serializedVersion: 2
@@ -16303,6 +16303,81 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!21 &800559586
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: planet (Instance)(Clone)
+  m_Shader: {fileID: -6465566751694194690, guid: c641023c2acad00408baeed137d4190a, type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_7E923C7A:
+        m_Texture: {fileID: 2800000, guid: 15a0349b0d8d22143b572a93f3a6fec3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _map:
+        m_Texture: {fileID: 2800000, guid: bd9bcf76420b838449f93d7e1ea11fa9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _mask:
+        m_Texture: {fileID: 2800000, guid: ff9193659aa7820488ebbfbfc79c92c4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_12763C06: 15
+    - Vector1_53A4598E: 0.508
+    - Vector1_63F88AD8: 32
+    - Vector1_6DFBE429: 5
+    - Vector1_EB4B75AD: 227.4
+    - _EnableExternalAlpha: 0
+    - _high: 0
+    - _pix_num: 32
+    - _scale: 7
+    - _sphereize_power: 15
+    m_Colors:
+    - Color_1566C295: {r: 0.3349069, g: 0.025943398, b: 0.5, a: 0}
+    - Color_26BD1176: {r: 0.46226418, g: 0.15937154, b: 0.023985408, a: 0}
+    - Color_FA0BFAFA: {r: 2.7380712, g: 2.9960785, b: 0, a: 1}
+    - Vector2_45236E45: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_45978B6F: {r: 0.3, g: 0, b: 0, a: 0}
+    - Vector4_3F5E7AB2: {r: 2, g: -1, b: 5, a: -1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _color1: {r: 0.93171716, g: 2.828427, b: 0, a: 1}
+    - _color2: {r: 0.7169812, g: 0.07453091, b: 0, a: 1}
+    - _color3: {r: 0.4811321, g: 0.049953606, b: 0, a: 1}
+    - _noises: {r: 2, g: 6, b: -1, a: -1}
+    - _rotation_speed: {r: 0.3, g: -0.2, b: 0, a: 0}
+    - _start_offset: {r: -124.90616, g: 779.4282, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &820522783
 GameObject:
   m_ObjectHideFlags: 0
@@ -23983,7 +24058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PGD:
     size: 1
-    rotation_speed_range: 0.5
+    rotation_speed: {x: 0, y: 0, z: 0}
     high_add: 0
     noise_layers_scales: {x: 2, y: -1, z: -1, w: -1}
     color1: {r: 2.828427, g: 0.35493988, b: 0, a: 1}
@@ -24027,8 +24102,8 @@ MonoBehaviour:
       radius: 0
       radius_thickness: 0
       scale: {x: 0, y: 0, z: 0}
-      ring_rotation_range: {x: 0, y: 0}
-      rotation_direction_ranges: {x: 0, y: 0, z: 0}
+      ring_rotation: {x: 0, y: 0, z: 0}
+      rotation_direction: {x: 0, y: 0, z: 0}
       rotation_speed_range: {x: 0, y: 0}
       size_OLT_curve:
         serializedVersion: 2
@@ -34881,7 +34956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PGD:
     size: 1
-    rotation_speed_range: 0.5
+    rotation_speed: {x: 0.3, y: -0.2, z: 0}
     high_add: 0
     noise_layers_scales: {x: 2, y: 6, z: -1, w: -1}
     color1: {r: 0.93171716, g: 2.828427, b: 0, a: 1}
@@ -34926,8 +35001,8 @@ MonoBehaviour:
       radius: 1
       radius_thickness: 0
       scale: {x: 0.5, y: 0.5, z: 0.5}
-      ring_rotation_range: {x: 0, y: 0}
-      rotation_direction_ranges: {x: 1, y: 1, z: 1}
+      ring_rotation: {x: 0, y: 0, z: 0}
+      rotation_direction: {x: -0.2, y: 0.5, z: 0}
       rotation_speed_range: {x: 0.4, y: 1.6}
       size_OLT_curve:
         serializedVersion: 2
@@ -35044,8 +35119,8 @@ MonoBehaviour:
       radius: 1
       radius_thickness: 0.1
       scale: {x: 1, y: 1, z: 1}
-      ring_rotation_range: {x: 0, y: 360}
-      rotation_direction_ranges: {x: 1, y: 1, z: 1}
+      ring_rotation: {x: 0, y: 0, z: 0}
+      rotation_direction: {x: 0, y: 0, z: 0}
       rotation_speed_range: {x: 0.4, y: 1.6}
       size_OLT_curve:
         serializedVersion: 2
@@ -40113,7 +40188,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89716f066596e7b40bcfe15d54a7fe12, type: 2}
+  - {fileID: 800559586}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

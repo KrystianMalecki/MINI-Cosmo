@@ -7,7 +7,7 @@ using System;
 public class Orbiter : MonoBehaviour
 {
     public Transform target;
-    public float speed=20;
+    public float speed = 20;
     public Vector3 axis;
     public bool smallerer;
     public Vector3 start;
@@ -26,7 +26,7 @@ public class Orbiter : MonoBehaviour
         transform.rotation = Quaternion.identity;
         if (smallerer)
         {
-            float num = Mathf.Lerp( 0.5f, 1.5f, Mathf.Clamp01(((transform.position.z / -dis)/2)+0.5f));
+            float num = Mathf.Lerp(0.5f, 1.5f, Mathf.Clamp01(((transform.position.z / -dis) / 2) + 0.5f));
             transform.localScale = new Vector3(num * start.x, num * start.y, num * start.z);
         }
 
@@ -35,12 +35,12 @@ public class Orbiter : MonoBehaviour
     {
 #if UNITY_EDITOR
 
-        
-            Handles.color = Color.gray;
 
-            Handles.DrawWireDisc(target.transform.position,axis.normalized,dis);
+        Handles.color = Color.gray;
 
-        
+        Handles.DrawWireDisc(target.transform.position, axis.normalized, dis);
+
+
 #endif
     }
     public void setdis()
@@ -50,11 +50,11 @@ public class Orbiter : MonoBehaviour
     }
 }
 [CustomEditor(typeof(Orbiter))]
-public class EditorOrbiter: Editor
+public class EditorOrbiter : Editor
 {
     public override void OnInspectorGUI()
     {
-       base.OnInspectorGUI();
+        base.OnInspectorGUI();
         Orbiter script = (Orbiter)target;
         if (GUILayout.Button("set dis"))
         {
