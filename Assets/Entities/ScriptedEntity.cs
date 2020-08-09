@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class ScriptedEntity : Entity
     [Tooltip("times 10 per second")]
     public float ERecharge = 0.1f;
 
-    public Text energytxt;
+    public TextMeshProUGUI energytxt;
     public Image energybar;
     public override void Start()
     {
@@ -27,7 +28,7 @@ public class ScriptedEntity : Entity
         Energy += number;
         if (energytxt != null)
         {
-            energytxt.text = "Energy: " + Energy.ToString("0") + "/" + MaxEnergy.ToString("0");
+            energytxt.text = StaticDataManager.instance.TMProFormater + "Energy: " + Energy.ToString("0") + "/" + MaxEnergy.ToString("0");
             if (energybar != null)
             {
                 energybar.fillAmount = Energy / MaxEnergy;

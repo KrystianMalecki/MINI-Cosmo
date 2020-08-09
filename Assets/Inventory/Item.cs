@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 [Serializable]
-[CreateAssetMenu(fileName = "New Item", menuName = "Custom/Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Custom/Inv/Item")]
 public class Item : ScriptableObject
 {
     public string name;
@@ -12,7 +12,8 @@ public class Item : ScriptableObject
     public float value;
     public bool isStackable;
     public string data;
-   
+    [Multiline(6)]
+    public string description;
 }
 [Serializable]
 public class ItemData

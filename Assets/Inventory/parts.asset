@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc98b24ead030246b7db58d14ac2267, type: 3}
   m_Name: parts
   m_EditorClassIdentifier: 
-  name: parts
+  name: Parts
   texture: {fileID: 21300000, guid: ba8891a99f41fa34e85146a7495e1113, type: 3}
   value: 10
   isStackable: 0
   data: 
+  description: Parts are very inportant in a lot of creations.

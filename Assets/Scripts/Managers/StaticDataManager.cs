@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class StaticDataManager : MonoBehaviour
 {
+    public string TMProFormater="<mspace=3.7>";
     public GameObject DieExplosion;
     public GameObject BulletBase;
     public GameObject CSOInfo;
+    
     public List<string> GoodTags= new List<string>();
     public List<string> NeutralTags = new List<string>();
     public List<string> EnemyTags = new List<string>();

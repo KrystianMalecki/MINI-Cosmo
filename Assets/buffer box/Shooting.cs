@@ -16,7 +16,7 @@ public class Shooting : MonoBehaviour
 {
     public bool IsPlayer;
     [SerializeField]
-    public List<WeaponEq> Weapons;
+    public List<WeaponEq> Weapons = new List<WeaponEq>();
     private GameObject BulletBase;
     public Rigidbody2D ShipR2D;
     public ScriptedEntity Shooter;

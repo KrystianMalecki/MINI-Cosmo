@@ -18,7 +18,7 @@ MonoBehaviour:
   RangeInSeconds: 0.5
   Damage: 20
   Speed: 50
-  FireRate: 5
+  FireRate: 0.1
   Cost: 1
   Inaccuracity: 10
   BulletCount: 1

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+
 [Serializable] 
 public class UIDictionary : SerializableDictionary<string, UIBase> { }
 public class UIManager : MonoBehaviour
@@ -11,10 +13,8 @@ public class UIManager : MonoBehaviour
     public UIDictionary UI_dictionary;
     public void Start()
     {
-        foreach (KeyValuePair<string, UIBase> kvp in UI_dictionary)
-        {
-            kvp.Value.CloseThis();
-        }
+        HideAll();
+
         StaticDataManager.instance.setCombatMode(true);
         anim.Play("GoBack",0,1.0f);
     }
@@ -22,16 +22,31 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!GetMenu("Inventory").IsOpen)
+            if (!GetMenu("Menu").IsOpen)
             {
-                OpenMenu("Inventory");
+                HideAll();
+                OpenMenu("Menu");
             }
             else
             {
-                CloseMenu("Inventory");
+                HideAll();
+
+                CloseMenu("Menu");
 
             }
         }
+    }
+    public void HideAll()
+    {
+        foreach(KeyValuePair<string,UIBase> pairs in UI_dictionary)
+        {
+            pairs.Value.CloseThis();
+        }
+    }
+    public void quit()
+    {
+        CloseMenuTime();
+        SceneManager.LoadScene(0);
     }
     public UIBase GetMenu(string s)
     {
@@ -39,20 +54,18 @@ public class UIManager : MonoBehaviour
         UI_dictionary.TryGetValue(s, out uib);
         return uib;
     }
-    public UIBase OpenMenu(string s)
+    public void OpenMenu(string s)
     {
         UIBase uib = GetMenu(s);
         uib.OpenThis();
         OpenMenuTime();
-        return uib;
     }
-    public UIBase CloseMenu(string s)
+    public void CloseMenu(string s)
     {
         UIBase uib = GetMenu(s);
         CloseMenuTime();
 
         StartCoroutine(Cwait(uib));
-        return uib;
     }
     public IEnumerator Cwait(UIBase uib)
     {

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class Player : ScriptedEntity, ICollector
 {
     public bool RelativeMovement;
-    public Text hptxt;
+    public TextMeshProUGUI hptxt;
     public float collect_speed=10;
     public override void Damage(float value)
     {
         base.Damage(value);
         if (hptxt != null)
         {
-            hptxt.text = "HP: " + HP.ToString("0") + "/" + MaxHP.ToString("0");
+            hptxt.text = StaticDataManager.instance.TMProFormater + "HP: " + HP.ToString("0") + "/" + MaxHP.ToString("0");
         }
     }
     public void LateUpdate()
