@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: OrbiterMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 817fd8d56744c72469336106daa49aaa, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _ALPHATEST_ON _EMISSION _SPECULAR_SETUP
   m_LightmapFlags: 2

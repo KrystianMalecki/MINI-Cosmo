@@ -25841,11 +25841,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4862241264509242943, guid: 4380ab11ad2ca91469b70ad2b7313749, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4862241264509242943, guid: 4380ab11ad2ca91469b70ad2b7313749, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4862241264509242943, guid: 4380ab11ad2ca91469b70ad2b7313749, type: 3}
       propertyPath: m_AnchorMin.x
@@ -42405,7 +42405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &8959118204073449483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47238,9 +47238,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 288e166b106eda4469042ef78f7ce13a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.017280716, b: 0, a: 0.09411765}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
