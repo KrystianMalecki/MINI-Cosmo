@@ -35,8 +35,11 @@ public class UEditorNode : ScriptableObject
     }
     public virtual void Draw()
     {
-    
-        ConIn.Draw();
+
+        if (ConIn != null)
+        {
+            ConIn.Draw();
+        }
         drawOuts();
         GUI.Box(nodeData.rect, "", style);
         
@@ -133,7 +136,10 @@ public class UEditorNode : ScriptableObject
     private void ProcessContextMenu()
     {
         GenericMenu genericMenu = new GenericMenu();
-        genericMenu.AddItem(new GUIContent("Remove node"), false, ()=>UDialogueNE.window.RemoveNode(nodeData.id));
+        if (nodeData.type != UNodeType.Start)
+        {
+            genericMenu.AddItem(new GUIContent("Remove node"), false, () => UDialogueNE.window.RemoveNode(nodeData.id));
+        }
         genericMenu.ShowAsContext();
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8959118204250226356}
   - component: {fileID: 8959118204250226357}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: OrbiterBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

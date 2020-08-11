@@ -104,7 +104,7 @@ public class WeaponUIManager : MonoBehaviour
         {
             if ( s.Weapons.Count > a)
             {
-                Debug.Log(1f - s.Weapons[a].Data.FireRate * s.Weapons[a].FireRateTimer);
+               // Debug.Log(1f - s.Weapons[a].Data.FireRate * s.Weapons[a].FireRateTimer);
                 boxes[a].bar.fillAmount = (1f- s.Weapons[a].Data.FireRate* s.Weapons[a].FireRateTimer);
               
                 boxes[a].bar.color=c((1f - s.Weapons[a].Data.FireRate * s.Weapons[a].FireRateTimer));

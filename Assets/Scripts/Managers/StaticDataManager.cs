@@ -5,18 +5,28 @@ using UnityEngine;
 
 public class StaticDataManager : MonoBehaviour
 {
+    [Header("Static data")]
     public string TMProFormater="<mspace=3.7>";
-    public GameObject DieExplosion;
-    public GameObject BulletBase;
-    public GameObject CSOInfo;
-    
+    public bool CombatMode = false;
+
+    [Header("Tag lists")]
     public List<string> GoodTags= new List<string>();
     public List<string> NeutralTags = new List<string>();
     public List<string> EnemyTags = new List<string>();
     public List<string> IgnoreTags = new List<string>();
-    public bool CombatMode=false;
+    [Header("GameObject Bases")]
     public GameObject ParticleBase;
     public GameObject OrbiterBase;
+    public GameObject ItemPickUpBase;
+    public GameObject DieExplosion;
+    public GameObject BulletBase;
+    public GameObject CSOInfo;
+
+    public void SpawnItemP(Vector2 position, ItemData iD)
+    {
+        GameObject go = Instantiate(ItemPickUpBase, position, Quaternion.identity);
+        go.GetComponent<ItemPickUp>().Setup(iD);
+    }
     public static StaticDataManager instance;
     public void Awake()
     {

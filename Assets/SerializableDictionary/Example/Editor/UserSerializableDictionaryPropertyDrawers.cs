@@ -5,6 +5,7 @@ using UnityEditor;
 
 [CustomPropertyDrawer(typeof(UIDictionary))]
     [CustomPropertyDrawer(typeof(ItemDictionary))]
+[CustomPropertyDrawer(typeof(MEDSstring))]
 
 public class AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer {}
 

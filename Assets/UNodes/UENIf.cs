@@ -4,12 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Events;
+using System;
 
+[Serializable]
+public class conditioner : SerializableCallback< bool>
+{
+    public conditioner()
+    {
+
+    }
+}
 public class UENIf : UEditorNode
 {
     public SerializedObject so;
     public SerializedProperty sp;
-    public Condition funcs = new Condition();
+    public conditioner funcs = new conditioner();
     public override void Setup(UNode data)
     {
         base.Setup(data);
@@ -28,7 +37,7 @@ public class UENIf : UEditorNode
         sp = so.FindProperty("funcs");
         if (nodeData.funcData != "")
         {
-            funcs = JsonUtility.FromJson<Condition>(nodeData.ifData);
+            funcs = JsonUtility.FromJson<conditioner>(nodeData.ifData);
         }
         setRect();
     }

@@ -15,31 +15,62 @@ MonoBehaviour:
   nodes:
   - rect:
       serializedVersion: 2
-      x: 256
-      y: 168
-      width: 200
-      height: 205
-    type: 0
-    outs: ffffffff
+      x: 57
+      y: 219
+      width: 100
+      height: 100
+    type: 3
+    outs: 01000000
     id: 0
     characterName: '[Character Name]'
     text: '[Text]'
-    responses:
-    - Response number 0
+    responses: []
     funcData: 
     ifData: 
     UDNElink: 
   - rect:
       serializedVersion: 2
-      x: 966
-      y: 224
+      x: 445
+      y: 175
+      width: 200
+      height: 230
+    type: 0
+    outs: 0200000003000000
+    id: 1
+    characterName: name
+    text: 0
+    responses:
+    - go to 1
+    - go to 2
+    funcData: 
+    ifData: 
+    UDNElink: 
+  - rect:
+      serializedVersion: 2
+      x: 756
+      y: 263
       width: 200
       height: 180
     type: 0
     outs: 
-    id: 1
-    characterName: '[Character Name]'
-    text: '[Text]'
+    id: 2
+    characterName: name
+    text: 1
+    responses: []
+    funcData: 
+    ifData: 
+    UDNElink: 
+  - rect:
+      serializedVersion: 2
+      x: 801
+      y: 469
+      width: 200
+      height: 180
+    type: 0
+    outs: 
+    id: 3
+    characterName: name
+    text: 2
     responses: []
     funcData: 
     ifData: 

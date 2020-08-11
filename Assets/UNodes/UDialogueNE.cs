@@ -29,6 +29,10 @@ public class UDialogueNE : EditorWindow
     }
     public void LoadData()
     {
+        if (dialogueSelected.nodes.Count < 1)
+        {
+            AddNode(new Vector2(0, 0), UNodeType.Start);
+        }
         nodes = new List<UEditorNode>();
         cons = new List<UConnection>();
         int b = 0;
@@ -132,6 +136,10 @@ public class UDialogueNE : EditorWindow
 
         }
     }
+    public void warp()
+    {
+      //  OnDrag(Vector2.zero-)
+    }
     private void OnDrag(Vector2 delta)
     {
         drag = delta;
@@ -218,6 +226,13 @@ public class UDialogueNE : EditorWindow
             case UNodeType.If:
                 {
                     UENIf uen = CreateInstance<UENIf>();
+                    uen.Setup(nodeData);
+                    nodes.Add(uen);
+                    break;
+                }
+            case UNodeType.Start:
+                {
+                    UENStarter uen = CreateInstance<UENStarter>();
                     uen.Setup(nodeData);
                     nodes.Add(uen);
                     break;

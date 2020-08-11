@@ -8,6 +8,12 @@ public class ItemPickUp : MonoBehaviour
     public GameObject go;
     public Rigidbody2D r2d;
     public ICollector icoll;
+    public SpriteRenderer sr;
+    public void Setup(ItemData iD)
+    {
+        item = iD;
+        sr.sprite = Inventory.instance.GetItemInfo(iD.id).texture;
+    }
     public void OnTriggerEnter2D(Collider2D col)
     {
         if(!col.isTrigger)
