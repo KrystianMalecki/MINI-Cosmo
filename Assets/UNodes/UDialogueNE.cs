@@ -16,7 +16,7 @@ public class UDialogueNE : EditorWindow
     private Vector2 drag;
     public Texture t;
     private Rect ToolBoxRect;
-    private List<UConnection> cons = new List<UConnection>();
+    public List<UConnection> cons = new List<UConnection>();
     private UConnector selectedInPoint;
     private UConnector selectedOutPoint;
     private float thickness = 5;
@@ -195,6 +195,8 @@ public class UDialogueNE : EditorWindow
         genericMenu.AddItem(new GUIContent("Add Text Node"), false, () => AddNode(mousePosition, UNodeType.Text));
         genericMenu.AddItem(new GUIContent("Add Function Node"), false, () => AddNode(mousePosition, UNodeType.Function));
         genericMenu.AddItem(new GUIContent("Add If Node"), false, () => AddNode(mousePosition, UNodeType.If));
+        genericMenu.AddItem(new GUIContent("Add Exit Node"), false, () => AddNode(mousePosition, UNodeType.Exit));
+
         genericMenu.ShowAsContext();
     }
     public void AddNode(Vector2 position, UNodeType type)
@@ -233,6 +235,13 @@ public class UDialogueNE : EditorWindow
             case UNodeType.Start:
                 {
                     UENStarter uen = CreateInstance<UENStarter>();
+                    uen.Setup(nodeData);
+                    nodes.Add(uen);
+                    break;
+                }
+            case UNodeType.Exit:
+                {
+                    UENExit uen = CreateInstance<UENExit>();
                     uen.Setup(nodeData);
                     nodes.Add(uen);
                     break;

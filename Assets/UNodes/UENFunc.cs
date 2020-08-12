@@ -9,6 +9,7 @@ public class UENFunc : UEditorNode
 {
     public SerializedObject so;
     public SerializedProperty sp;
+    [SerializeField]
     public UnityEvent funcs = new UnityEvent();
     public override void Setup(UNode data)
     {
@@ -18,13 +19,17 @@ public class UENFunc : UEditorNode
         {
             nodeData.outs.Add(-1);
         }
-        ConOuts.Add(new UConnector(UConnectorType.Out, this, 0, 15,Color.white));
+        ConOuts.Add(new UConnector(UConnectorType.Out, this, 0, 15, Color.white));
         so = new SerializedObject(this);
         sp = so.FindProperty("funcs");
-        if (nodeData.funcData != "")
+        /*if (nodeData.funcData != "")
         {
             funcs = JsonUtility.FromJson<UnityEvent>(nodeData.funcData);
-        }
+        }*/
+          if (nodeData.funcData2 != null)
+          {
+              funcs = nodeData.funcData2;
+          }
         setRect();
     }
     public void setRect()
@@ -34,7 +39,7 @@ public class UENFunc : UEditorNode
         {
             a = funcs.GetPersistentEventCount();
         }
-            
+
         nodeData.rect = new Rect(nodeData.rect.position, new Vector2(300, 120 + Mathf.Max(0, (a - 1)) * 47));
 
     }
@@ -60,11 +65,13 @@ public class UENFunc : UEditorNode
         so.ApplyModifiedProperties();
         if (EditorGUI.EndChangeCheck())
         {
-            nodeData.funcData = JsonUtility.ToJson(funcs);
+            // nodeData.funcData = JsonUtility.ToJson(funcs);
+            nodeData.funcData2 = funcs;
+
             setRect();
         }
 
-      
+
     }
 
 }

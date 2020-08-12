@@ -479,7 +479,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: d9b2df7a192c1914b83426ca8ac1a2f5, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -18279,7 +18279,7 @@ MonoBehaviour:
   - Untagged
   ParticleBase: {fileID: 5496339563995891960, guid: 4a904b75d631d3944848840987f087a6, type: 3}
   OrbiterBase: {fileID: 8959118204250226358, guid: 65a36325088741a46b4de430f8d271c1, type: 3}
-  ItemPickUpBase: {fileID: 0}
+  ItemPickUpBase: {fileID: 3465288830398462496, guid: 2f22539189091b6478c183fc88aba9d8, type: 3}
   DieExplosion: {fileID: 8879009483704114622, guid: 17111cd46a11b9f48bd507ba7a897d58, type: 3}
   BulletBase: {fileID: 5566205743941762595, guid: 17ca0124c58c98d47aa55426648fba23, type: 3}
   CSOInfo: {fileID: 6353994137758435593, guid: a7ef7fef4556388438e323e5389cf725, type: 3}
@@ -18736,13 +18736,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<mspace=3.7>Tip 1: If you die you will be dead
-
-    Tip 2: If game is
-    too hard try getting good
-
-    Tip 3: If you can''t get good go cry like a little
-    bitch'
+  m_text: "<mspace=3.7>Tip 1: If you die you will be dead\nTip 2: If game is too
+    hard try getting good\nTip 3: If you can't get good go cry like a little bitch\nk
+    <sprite=0>  <sprite=1>  <sprite=2>  <sprite=3>  \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0043b26dfa46e8246bde145eedfda3ae, type: 2}
   m_sharedMaterial: {fileID: -6964351559416320598, guid: 0043b26dfa46e8246bde145eedfda3ae, type: 2}
@@ -18761,7 +18757,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: d9b2df7a192c1914b83426ca8ac1a2f5, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -19627,52 +19623,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1069805448
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1069805450}
-  - component: {fileID: 1069805449}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1069805449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069805448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19346193fa045c84fb4d879d0346d1dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Storage:
-    m_keys: []
-    m_values: []
---- !u!4 &1069805450
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069805448}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.44, y: -0.20000005, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1070983433
 GameObject:
   m_ObjectHideFlags: 0
@@ -31974,12 +31924,23 @@ MonoBehaviour:
     type: 0
     outs: 
     id: 0
+    charSpr: {fileID: 0}
     characterName: 
     text: 
     responses: []
-    funcData: 
-    ifData: 
+    funcData2:
+      m_PersistentCalls:
+        m_Calls: []
+    ifData2:
+      _target: {fileID: 0}
+      _methodName: 
+      _args: []
+      _dynamic: 0
+      _typeName: conditioner, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      dirty: 0
     UDNElink: 
+  uimanager: {fileID: 1267362283}
 --- !u!114 &1739932150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32978,7 +32939,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: d9b2df7a192c1914b83426ca8ac1a2f5, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -43669,6 +43630,63 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 2
+--- !u!1001 &910367521995196716
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 910367522141791908, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_Name
+      value: GameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910367522141791910, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
 --- !u!4 &4401845340099376503
 Transform:
   m_ObjectHideFlags: 0

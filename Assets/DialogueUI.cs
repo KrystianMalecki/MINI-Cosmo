@@ -16,6 +16,7 @@ public class DialogueUI : UIBase
     public List<ResponseBox> boxes = new List<ResponseBox>();
     public SODialogue dialogueData;
     public UNode current;
+    public UIManager uimanager;
     public override void OpenThis()
     {
         base.OpenThis();
@@ -24,12 +25,15 @@ public class DialogueUI : UIBase
     }
     public void Progress(int id)
     {
-        if (id >= dialogueData.nodes.Count)
+        if (id >= dialogueData.nodes.Count||id==-1)
         {
-            //CloseThis();
-            Debug.LogError("leave");
+            uimanager.HideAll();
+
+            uimanager.CloseMenu("Dialogue");
+          //  Debug.LogError("leave");
             return;
         }
+     //   Debug.Log(current.type+">"+ dialogueData.nodes[id].type);
         current = dialogueData.nodes[id];
 
         DoCurrent();
@@ -46,8 +50,10 @@ public class DialogueUI : UIBase
                 }
             case UNodeType.Function:
                 {
-                    UnityEvent con = JsonUtility.FromJson<UnityEvent>(current.funcData);
-                    con.Invoke();
+                   // Debug.Log("funcy");
+                    /* UnityEvent con = JsonUtility.FromJson<UnityEvent>(current.funcData);
+                     con.Invoke();*/
+                    current.funcData2.Invoke();
                     Progress(current.outs[0]);
 
                     break;
@@ -66,8 +72,10 @@ public class DialogueUI : UIBase
 
             case UNodeType.If:
                 {
-                    conditioner con = JsonUtility.FromJson<conditioner>(current.ifData);
-                    bool b = con.Invoke();
+                    /* conditioner con = JsonUtility.FromJson<conditioner>(current.ifData);
+                      bool b = con.Invoke();*/
+                    bool b = current.ifData2.Invoke(); 
+
                     if (b)
                     {
                         Progress(current.outs[0]);
@@ -76,6 +84,13 @@ public class DialogueUI : UIBase
                     {
                         Progress(current.outs[1]);
                     }
+                    break;
+                }
+            case UNodeType.Exit:
+                {
+                    uimanager.HideAll();
+
+                    uimanager.CloseMenu("Dialogue");
                     break;
                 }
         }
@@ -87,7 +102,7 @@ public class DialogueUI : UIBase
     }
     public void DisplayInfo(UNode node)
     {
-        icon = null;
+        icon.sprite = node.charSpr ;
         namer.text = StaticDataManager.instance.TMProFormater + node.characterName;
         txt.text = StaticDataManager.instance.TMProFormater + node.text;
         int offset = 0;

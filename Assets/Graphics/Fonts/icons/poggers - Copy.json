@@ -1,0 +1,94 @@
+{"frames": [
+
+{
+	"filename": "x.png",
+	"frame": {"x":0,"y":0,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "omega.png",
+	"frame": {"x":6,"y":0,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":6,"y":0,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},{
+	"filename": "yes.png",
+	"frame": {"x":0,"y":6,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":6,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},{
+	"filename": "orb.png",
+	"frame": {"x":6,"y":6,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":6,"y":6,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},{
+	"filename": "5.png",
+	"frame": {"x":6,"y":6,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":12,"y":0,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},{
+	"filename": "6.png",
+	"frame": {"x":6,"y":6,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":12,"y":6,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},{
+	"filename": "7.png",
+	"frame": {"x":6,"y":6,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":12,"y":12,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},{
+	"filename": "8.png",
+	"frame": {"x":6,"y":6,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":12,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},{
+	"filename": "9.png",
+	"frame": {"x":6,"y":6,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":6,"y":12,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+},{
+	"filename": "10.png",
+	"frame": {"x":6,"y":6,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":12,"y":12,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "1",
+	"version": "1.0",
+	"image": "16x16",
+	"format": "RGBA6666",
+	"size": {"w":18,"h":18},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:196a26a2e149d675b91ffc6fa3561e76:fc926c7e275404b7e0649307410475cb:424723c3774975ddb2053fd5c4b65f6e$"
+}
+}

@@ -9,6 +9,7 @@ using System;
 [Serializable]
 public class conditioner : SerializableCallback< bool>
 {
+    [SerializeField]
     public conditioner()
     {
 
@@ -18,6 +19,7 @@ public class UENIf : UEditorNode
 {
     public SerializedObject so;
     public SerializedProperty sp;
+    [SerializeField]
     public conditioner funcs = new conditioner();
     public override void Setup(UNode data)
     {
@@ -35,9 +37,13 @@ public class UENIf : UEditorNode
 
         so = new SerializedObject(this);
         sp = so.FindProperty("funcs");
-        if (nodeData.funcData != "")
+        /* if (nodeData.ifData != "")
+         {
+             funcs = JsonUtility.FromJson<conditioner>(nodeData.ifData);
+         }*/
+        if (nodeData.ifData2 != null)
         {
-            funcs = JsonUtility.FromJson<conditioner>(nodeData.ifData);
+            funcs = nodeData.ifData2;
         }
         setRect();
     }
@@ -68,7 +74,9 @@ public class UENIf : UEditorNode
         so.ApplyModifiedProperties();
         if (EditorGUI.EndChangeCheck())
         {
-            nodeData.ifData = JsonUtility.ToJson(funcs);
+            // nodeData.ifData = JsonUtility.ToJson(funcs);
+            nodeData.ifData2 = funcs;
+
             setRect();
         }
 

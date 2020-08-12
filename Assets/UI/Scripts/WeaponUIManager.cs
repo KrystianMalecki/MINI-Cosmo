@@ -19,7 +19,6 @@ public class WeaponUIManager : MonoBehaviour
     {
         time = 100000;
         displayItems();
-        Debug.Log(time);
         StartCoroutine("tick");
 
     }

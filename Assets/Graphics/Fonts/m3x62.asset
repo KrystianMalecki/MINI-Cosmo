@@ -55,9 +55,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: m3x62
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 130896962
   material: {fileID: -6964351559416320598}
-  materialHashCode: 0
+  materialHashCode: 709402146
   m_Version: 1.1.0
   m_SourceFontFileGUID: 5390b396fe0f9744ea9af5c1196f740f
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 5390b396fe0f9744ea9af5c1196f740f, type: 3}
