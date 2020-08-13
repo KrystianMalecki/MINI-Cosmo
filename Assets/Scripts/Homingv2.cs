@@ -5,7 +5,7 @@ using UnityEditor;
 public class Homingv2 : MonoBehaviour
 {
     public Collider2D colliderer;
-    public List<GameObject> objects;
+    public List<GameObject> objects = new List<GameObject>();
     public GameObject Target;
     public bool IsPlayer;
     public void OnTriggerEnter2D(Collider2D col)
@@ -34,7 +34,7 @@ public class Homingv2 : MonoBehaviour
     }
     IEnumerator HomeTick()
     {
-        while (true)
+        while (false)
         {
             if (objects.Count > 0)
             {

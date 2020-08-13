@@ -25,7 +25,6 @@ public class Inventory : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
     }
     public bool AddItem(string id)
     {
