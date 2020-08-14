@@ -16,7 +16,7 @@ public class UENText : UEditorNode
         setRect();
         for (int a = 0; a < nodeData.outs.Count; a++)
         {
-            ConOuts.Add(new UConnector(UConnectorType.Out, this, a, a * 25 + 15 + 25 + 105+65, Color.white));
+            ConOuts.Add(new UConnector(UConnectorType.Out, this, a, a * 25 + 15 + 25 + 105 + 65, Color.white));
         }
         so = new SerializedObject(this);
         sp = so.FindProperty("CharacterTexture");
@@ -27,7 +27,7 @@ public class UENText : UEditorNode
     }
     public void setRect()
     {
-        nodeData.rect = new Rect(nodeData.rect.position, new Vector2(250, 200 + (nodeData.responses.Count - 1) * 25 + 5+65));
+        nodeData.rect = new Rect(nodeData.rect.position, new Vector2(250, 200 + (nodeData.responses.Count - 1) * 25 + 5 + 65));
 
     }
     public override void StyleSetup()
@@ -52,8 +52,10 @@ public class UENText : UEditorNode
         GUI.color = new Color(0.35f, 0.35f, 0.35f);
         GUI.DrawTexture(new Rect(nodeData.rect.x + 15, nodeData.rect.y + y - 35, 50, 50), t);
         GUI.color = Color.white;
-
-        GUI.DrawTexture(new Rect(nodeData.rect.x+ 15, nodeData.rect.y + y -35,50, 50), nodeData.charSpr.texture);
+        if (nodeData.charSpr)
+        {
+            GUI.DrawTexture(new Rect(nodeData.rect.x + 15, nodeData.rect.y + y - 35, 50, 50), nodeData.charSpr.texture);
+        }
         so.ApplyModifiedProperties();
         if (EditorGUI.EndChangeCheck())
         {
@@ -64,17 +66,17 @@ public class UENText : UEditorNode
         }
         for (int a = 0; a < nodeData.outs.Count; a++)
         {
-            nodeData.responses[a] = GUI.TextField(makeRect(0, y, 20,195), nodeData.responses[a]);
+            nodeData.responses[a] = GUI.TextField(makeRect(0, y, 20, 195), nodeData.responses[a]);
             GUI.color = Color.red;
             y -= 25;
-            if (GUI.Button(makeRect(200, y, 20, 20),"X"))
+            if (GUI.Button(makeRect(200, y, 20, 20), "X"))
             {
                 nodeData.responses.RemoveAt(a);
                 nodeData.outs.RemoveAt(a);
                 ConOuts = new List<UConnector>();
                 for (int h = 0; h < nodeData.outs.Count; h++)
                 {
-                    ConOuts.Add(new UConnector(UConnectorType.Out, this,h, h * 25 + 15 + 25 + 105 + 65, Color.white));
+                    ConOuts.Add(new UConnector(UConnectorType.Out, this, h, h * 25 + 15 + 25 + 105 + 65, Color.white));
                 }
                 UDialogueNE.window.cons = new List<UConnection>();
 
@@ -103,13 +105,13 @@ public class UENText : UEditorNode
         }
 
 
-        
+
     }
     public void AddResponse()
     {
         nodeData.outs.Add(-1);
         nodeData.responses.Add("Response number " + nodeData.responses.Count);
-        ConOuts.Add(new UConnector(UConnectorType.Out, this, nodeData.responses.Count - 1, (nodeData.responses.Count - 1) * 25 + 15 + 25 + 105+65, Color.white));
+        ConOuts.Add(new UConnector(UConnectorType.Out, this, nodeData.responses.Count - 1, (nodeData.responses.Count - 1) * 25 + 15 + 25 + 105 + 65, Color.white));
         setRect();
 
     }
