@@ -1,4 +1,4 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -30,12 +30,16 @@ public class Inventory : MonoBehaviour
     {
         return AddItem(id, 1);
     }
+    public bool AddItem(ItemData idata)
+    {
+        return AddItem(idata.id, idata.count);
+    }
     public bool AddItem(string id, int num)
     {
 
         Item i = GetItemInfo(id);
 
-       
+
 
         int index = items.FindIndex(0, x => x.id == id);
         if (index == -1)
@@ -73,6 +77,19 @@ public class Inventory : MonoBehaviour
             Debug.LogError("Can't find item with id:" + id);
         }
         return i;
+    }
+    public void RemoveItem(ItemData idata)
+    {
+        int a = items.FindIndex(x => x.id == idata.id);
+        if (a == -1)
+        {
+            return;
+        }
+        items[a].count -= idata.count;
+        if (items[a].count < 1)
+        {
+            items.RemoveAt(a);
+        }
     }
 }
 
