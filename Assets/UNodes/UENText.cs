@@ -8,8 +8,11 @@ public class UENText : UEditorNode
      public GUIStyle selectedStyle;*/
     public SerializedObject so;
     public SerializedProperty sp;
+    public SerializedProperty colsp;
+
     public Sprite CharacterTexture;
     public Texture2D t;
+    public Color col;
     public override void Setup(UNode data)
     {
         base.Setup(data);
@@ -20,6 +23,8 @@ public class UENText : UEditorNode
         }
         so = new SerializedObject(this);
         sp = so.FindProperty("CharacterTexture");
+        colsp = so.FindProperty("col");
+
         if (nodeData.charSpr != null)
         {
             CharacterTexture = nodeData.charSpr;
@@ -47,8 +52,10 @@ public class UENText : UEditorNode
         nodeData.characterName = GUI.TextField(makeRect(0, y, 20), nodeData.characterName);
         nodeData.text = GUI.TextField(makeRect(0, y, 100), nodeData.text);
         so.Update();
+
         EditorGUI.BeginChangeCheck();
         EditorGUI.PropertyField(makeRect(0, y, 60), sp);
+
         GUI.color = new Color(0.35f, 0.35f, 0.35f);
         GUI.DrawTexture(new Rect(nodeData.rect.x + 15, nodeData.rect.y + y - 35, 50, 50), t);
         GUI.color = Color.white;
@@ -56,18 +63,12 @@ public class UENText : UEditorNode
         {
             GUI.DrawTexture(new Rect(nodeData.rect.x + 15, nodeData.rect.y + y - 35, 50, 50), nodeData.charSpr.texture);
         }
-        so.ApplyModifiedProperties();
-        if (EditorGUI.EndChangeCheck())
-        {
-            // nodeData.funcData = JsonUtility.ToJson(funcs);
-            nodeData.charSpr = CharacterTexture;
 
-            setRect();
-        }
         for (int a = 0; a < nodeData.outs.Count; a++)
         {
             nodeData.responses[a] = GUI.TextField(makeRect(0, y, 20, 195), nodeData.responses[a]);
             GUI.color = Color.red;
+          
             y -= 25;
             if (GUI.Button(makeRect(200, y, 20, 20), "X"))
             {
@@ -104,6 +105,14 @@ public class UENText : UEditorNode
             AddResponse();
         }
 
+        so.ApplyModifiedProperties();
+        if (EditorGUI.EndChangeCheck())
+        {
+            // nodeData.funcData = JsonUtility.ToJson(funcs);
+            nodeData.charSpr = CharacterTexture;
+
+            setRect();
+        }
 
 
     }

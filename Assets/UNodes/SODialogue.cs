@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 [CreateAssetMenu(fileName = "New SODialogue", menuName = "Custom/SODialogue")]
 
 public class SODialogue : ScriptableObject
@@ -20,7 +21,7 @@ public class SODialogue : ScriptableObject
      }*/
     public void RemoveAt(int id)
     {
-        
+
         foreach (UNode node in nodes)
         {
 
@@ -30,7 +31,8 @@ public class SODialogue : ScriptableObject
                 {
                     node.outs[b] = -1;
 
-                }else if (node.outs[b] > id)
+                }
+                else if (node.outs[b] > id)
                 {
                     node.outs[b] -= 1;
 
@@ -47,6 +49,8 @@ public class SODialogue : ScriptableObject
         }
     }
 }
+
+
 [System.Serializable]
 public class UNodePack
 {

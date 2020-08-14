@@ -20,45 +20,55 @@ public class UDialogueNE : EditorWindow
     private UConnector selectedInPoint;
     private UConnector selectedOutPoint;
     private float thickness = 5;
+
     [MenuItem("Window/Dialogue Node Editor")]
-    private static void OpenWindow()
+    public static void OpenWindow()
     {
 
         window = GetWindow<UDialogueNE>();
         window.titleContent = new GUIContent("Dialogue Node Editor");
     }
+    public static void OpenWindow(SODialogue sod)
+    {
+
+        OpenWindow();
+        window.dialogueSelected = sod;
+    }
     public void LoadData()
     {
-        if (dialogueSelected.nodes.Count < 1)
+        if (dialogueSelected != null)
         {
-            AddNode(new Vector2(0, 0), UNodeType.Start);
-        }
-        nodes = new List<UEditorNode>();
-        cons = new List<UConnection>();
-        int b = 0;
-        for (int a = 0; a < nodes.Count; a++)
-        {
-            if (dialogueSelected.nodes.Count > a)
+            if (dialogueSelected.nodes.Count < 1)
             {
-                nodes[a].Setup(dialogueSelected.nodes[a]);
-                b++;
-
+                AddNode(new Vector2(0, 0), UNodeType.Start);
             }
-        }
-        for (int a = b; a < dialogueSelected.nodes.Count; a++)
-        {
-            AddEditorNode(dialogueSelected.nodes[a]);
-        }
-        for (int a = 0; a < nodes.Count; a++)
-        {
-
-            if (nodes[a].nodeData.outs != null)
+            nodes = new List<UEditorNode>();
+            cons = new List<UConnection>();
+            int b = 0;
+            for (int a = 0; a < nodes.Count; a++)
             {
-                for (int c = 0; c < nodes[a].nodeData.outs.Count; c++)
+                if (dialogueSelected.nodes.Count > a)
                 {
-                    if (nodes[a].nodeData.outs[c] != -1)
+                    nodes[a].Setup(dialogueSelected.nodes[a]);
+                    b++;
+
+                }
+            }
+            for (int a = b; a < dialogueSelected.nodes.Count; a++)
+            {
+                AddEditorNode(dialogueSelected.nodes[a]);
+            }
+            for (int a = 0; a < nodes.Count; a++)
+            {
+
+                if (nodes[a].nodeData.outs != null)
+                {
+                    for (int c = 0; c < nodes[a].nodeData.outs.Count; c++)
                     {
-                        AddConnection(nodes[a].nodeData.id, c, nodes[a].nodeData.outs[c]);
+                        if (nodes[a].nodeData.outs[c] != -1)
+                        {
+                            AddConnection(nodes[a].nodeData.id, c, nodes[a].nodeData.outs[c]);
+                        }
                     }
                 }
             }
@@ -138,7 +148,7 @@ public class UDialogueNE : EditorWindow
     }
     public void warp()
     {
-      //  OnDrag(Vector2.zero-)
+        //  OnDrag(Vector2.zero-)
     }
     private void OnDrag(Vector2 delta)
     {
@@ -205,7 +215,7 @@ public class UDialogueNE : EditorWindow
         node.type = type;
         dialogueSelected.nodes.Add(node);
         AddEditorNode(node);
-       
+
     }
     public void AddEditorNode(UNode nodeData)
     {
@@ -258,9 +268,9 @@ public class UDialogueNE : EditorWindow
 
     public void AddConnection(int nodeID, int conID, int toID)
     {
-    
-            UConnection con = new UConnection(nodes[nodeID].ConOuts[conID], nodes[toID].ConIn, nodes[nodeID].ConOuts[conID].color);
-        
+
+        UConnection con = new UConnection(nodes[nodeID].ConOuts[conID], nodes[toID].ConIn, nodes[nodeID].ConOuts[conID].color);
+
         nodes[nodeID].nodeData.outs[conID] = toID;
         cons.Add(con);
     }
@@ -271,11 +281,11 @@ public class UDialogueNE : EditorWindow
             ucon.Draw();
         }
     }
-    public void DrawLine(Vector2 p2, Vector2 p1,Color c)
+    public void DrawLine(Vector2 p2, Vector2 p1, Color c)
     {
         Handles.DrawBezier(p1, p1 + Vector2.left * 20f, p1, p1 + Vector2.left * 20f, c, null, thickness);
         Handles.DrawBezier(p1 + Vector2.left * 19f, p2 - Vector2.left * 19f, p1 + Vector2.left * 19f, p2 - Vector2.left * 19f, c, null, thickness);
-        Handles.DrawBezier(p2 - Vector2.left * 20f, p2, p2 - Vector2.left * 20f, p2,c, null, thickness);
+        Handles.DrawBezier(p2 - Vector2.left * 20f, p2, p2 - Vector2.left * 20f, p2, c, null, thickness);
 
     }
     private void DrawConnectionLine(Event e)
@@ -283,7 +293,7 @@ public class UDialogueNE : EditorWindow
         if (selectedInPoint != null && selectedOutPoint == null)
         {
 
-            DrawLine( e.mousePosition,selectedInPoint.rect.center, selectedInPoint.color);
+            DrawLine(e.mousePosition, selectedInPoint.rect.center, selectedInPoint.color);
             GUI.changed = true;
         }
 

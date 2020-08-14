@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 public enum UConnectorType { In, Out }
-public class UConnector 
+public class UConnector
 {
     public UEditorNode node;
     public Rect rect;
@@ -14,7 +14,7 @@ public class UConnector
     public Color color = Color.white;
     private float f;
     public float offset;
-    public UConnector(UConnectorType type, UEditorNode n, int conid, float off, Color cc )
+    public UConnector(UConnectorType type, UEditorNode n, int conid, float off, Color cc)
     {
         color = cc;
         rect = new Rect(0, 0, 15f, 20f);
@@ -28,7 +28,7 @@ public class UConnector
         {
             case UConnectorType.In:
                 {
-                    f=- rect.width + 8f;
+                    f = -rect.width + 8f;
 
                     style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/cmd left.png") as Texture2D;
                     style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/cmd left on.png") as Texture2D;
@@ -36,29 +36,30 @@ public class UConnector
                 }
             case UConnectorType.Out:
                 {
-                   f= node.nodeData.rect.width - 8f;
+                    f = node.nodeData.rect.width - 8f;
                     style.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/cmd right.png") as Texture2D;
                     style.active.background = EditorGUIUtility.Load("builtin skins/darkskin/images/cmd right on.png") as Texture2D;
 
                     break;
                 }
         }
+       
     }
-    
+
     public void Draw()
     {
 
 
-        rect.y = node.nodeData.rect.y+ offset;
+        rect.y = node.nodeData.rect.y + offset;
         rect.x = node.nodeData.rect.x + f;
         GUI.color = color;
 
-       
+
         if (GUI.Button(rect, "", style))
         {
             if (UDialogueNE.window != null)
             {
-               UDialogueNE.window.OnClickPoint(this);
+                UDialogueNE.window.OnClickPoint(this);
             }
         }
         GUI.color = Color.white;
