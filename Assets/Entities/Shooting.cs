@@ -32,7 +32,7 @@ public class Shooting : MonoBehaviour
         {
             return;
         }
-        if (Shooter.Energy >= Weapons[WeaponID].Data.Cost)
+        if (Shooter.data.energy >= Weapons[WeaponID].Data.Cost)
         {
             if (Weapons[WeaponID].FireRateTimer <= 0)
             {

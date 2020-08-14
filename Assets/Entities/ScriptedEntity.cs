@@ -6,32 +6,50 @@ using UnityEngine.UI;
 
 public class ScriptedEntity : Entity
 {
-    public float Speed = 5;
-    public float RotationSpeed = 1;
-    [Header("Energy")]
-    public float MaxEnergy = 20;
-    public float Energy;
-    public float ERechargeWaitTime = 1;
-    [Tooltip("times 10 per second")]
-    public float ERecharge = 0.1f;
+    public ShipData data;
+
 
     public TextMeshProUGUI energytxt;
     public Image energybar;
     public override void Start()
     {
+        data.HP = data.maxHP;
+        Damage(0);
         base.Start();
-        Energy = MaxEnergy;
+        data.energy = data.maxEnergy;
         AddEnergy(0);
+       
+    }
+    public override void Damage(float value)
+    {
+
+        data.HP -= value;
+        if (hpbar != null)
+        {
+            hpbar.fillAmount = data.HP / data.maxHP;
+        }
+        if (data.HP <= 0)
+        {
+            Die();
+        }
+
+
     }
     public void AddEnergy(float number)
     {
-        Energy += number;
+        data.energy += number;
+        if (data.energy > data.maxEnergy)
+        {
+            StopCoroutine("EnergyOverload");
+
+            StartCoroutine("EnergyOverload");
+        }
         if (energytxt != null)
         {
-            energytxt.text = StaticDataManager.instance.TMProFormater + "Energy: " + Energy.ToString("0") + "/" + MaxEnergy.ToString("0");
+            energytxt.text = StaticDataManager.instance.TMProFormater + "Energy: " + data.energy.ToString("0") + "/" + data.energy.ToString("0");
             if (energybar != null)
             {
-                energybar.fillAmount = Energy / MaxEnergy;
+                energybar.fillAmount = data.energy / data.maxEnergy;
             }
         }
         if (number < 0)
@@ -40,13 +58,27 @@ public class ScriptedEntity : Entity
             StartCoroutine("EnergycountDown");
         }
     }
-    IEnumerator EnergycountDown()
+    IEnumerator EnergyOverload()
     {
 
-        yield return new WaitForSeconds(ERechargeWaitTime);
-        while (Energy + ERecharge <= MaxEnergy)
+        StopCoroutine("EnergycountDown");
+
+        while (data.energy > data.maxEnergy)
         {
-            AddEnergy(ERecharge);
+            AddEnergy(-0.1f);
+            yield return new WaitForSeconds(0.1f);
+
+        }
+
+    }
+    IEnumerator EnergycountDown()
+    {
+        StopCoroutine("EnergyOverload");
+
+        yield return new WaitForSeconds(data.ERechargeWait);
+        while (data.energy<= data.maxEnergy)
+        {
+            AddEnergy(data.ERecharge);
             yield return new WaitForSeconds(0.1f);
 
         }
@@ -54,6 +86,6 @@ public class ScriptedEntity : Entity
     }
     public void LookAt(Vector2 v2)
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((v2.y - transform.position.y), (v2.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * RotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((v2.y - transform.position.y), (v2.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * data.rotationSpeed);
     }
 }

@@ -29,19 +29,19 @@ public class Player : ScriptedEntity, ICollector
 
         if (Input.GetKey(KeyCode.W))
         {
-            move(Vector3.up * Speed);
+            move(Vector3.up * data.speed);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            move(-Vector3.up * Speed);
+            move(-Vector3.up * data.speed);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            move(-Vector3.right * Speed);
+            move(-Vector3.right * data.speed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            move(Vector3.right * Speed);
+            move(Vector3.right * data.speed);
         }
     }
     public void FollowMouse()
@@ -53,11 +53,11 @@ public class Player : ScriptedEntity, ICollector
     {
         if (!RelativeMovement)
         {
-            r2d.AddForce(v3 * Speed);
+            r2d.AddForce(v3 * data.speed);
         }
         else
         {
-            r2d.AddRelativeForce(v3 * Speed);
+            r2d.AddRelativeForce(v3 * data.speed);
 
         }
     }

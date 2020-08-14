@@ -21862,7 +21862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1385714609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21879,12 +21879,24 @@ MonoBehaviour:
   MaxHP: 20
   r2d: {fileID: 1385714612}
   hpbar: {fileID: 0}
-  Speed: 5
-  RotationSpeed: 1
-  MaxEnergy: 20
-  Energy: 0
-  ERechargeWaitTime: 1
-  ERecharge: 0.1
+  data:
+    BasedOn: {fileID: 0}
+    shipInventory:
+      inv:
+        inv:
+        - line:
+          - type: 0
+            item:
+              id: 
+              count: 0
+    HP: 0
+    maxHP: 0
+    speed: 0
+    rotationSpeed: 0
+    maxEnergy: 20
+    energy: 0
+    ERechargeWait: 1
+    ERecharge: 0.1
   energytxt: {fileID: 0}
   energybar: {fileID: 0}
 --- !u!61 &1385714610
@@ -32651,12 +32663,87 @@ MonoBehaviour:
   MaxHP: 100
   r2d: {fileID: 1719185909}
   hpbar: {fileID: 162825637}
-  Speed: 5
-  RotationSpeed: 3
-  MaxEnergy: 20
-  Energy: 0
-  ERechargeWaitTime: 1
-  ERecharge: 0.1
+  data:
+    BasedOn: {fileID: 0}
+    shipInventory:
+      inv:
+        inv:
+        - line:
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+        - line:
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+        - line:
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+        - line:
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+          - type: 0
+            item:
+              id: 
+              count: 0
+    HP: 100
+    maxHP: 100
+    speed: 10
+    rotationSpeed: 5
+    maxEnergy: 20
+    energy: 0
+    ERechargeWait: 1
+    ERecharge: 0.1
   energytxt: {fileID: 76018823}
   energybar: {fileID: 869240125}
   RelativeMovement: 0
