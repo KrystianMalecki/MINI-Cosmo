@@ -16,9 +16,9 @@ MonoBehaviour:
   color: {r: 5.992157, g: 2.9490197, b: 0, a: 1}
   AdditionalEffect: {fileID: 0}
   RangeInSeconds: 0.5
-  Damage: 20
+  Damage: 5
   Speed: 50
-  FireRate: 0.1
+  FireRate: 1
   Cost: 1
   Inaccuracity: 10
   BulletCount: 1

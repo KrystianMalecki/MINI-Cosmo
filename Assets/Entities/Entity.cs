@@ -4,8 +4,8 @@ using UnityEngine.UI;
 using UnityEngine;
 public class Entity : MonoBehaviour
 {
-    public float HP;
-    public float MaxHP;
+    private float HP;
+    private float MaxHP;
     private GameObject Explosion;
     public Rigidbody2D r2d;
     public Image hpbar;

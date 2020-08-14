@@ -2,15 +2,26 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using System;
+[Serializable]
+public class TileColors : SerializableDictionary<TileType, Color> { }
 public class StaticDataManager : MonoBehaviour
 {
     [Header("Static data")]
-    public string TMProFormater="<mspace=3.7>";
+    public string TMProFormater = "<mspace=3.7>";
     public bool CombatMode = false;
+    public TileColors colors;
+    public static Dictionary<TileType, Color> yo = new Dictionary<TileType, Color> {
+    { TileType.Null, new Color(0, 0, 0, 1f) } ,
+    { TileType.Engine, new Color(0.5157232f, 1f, 0.4292453f, 1f) },
+    { TileType.Weapon, new Color(1f, 0.4700375f, 0.427451f, 1f) },
+    { TileType.Power, new Color(0.9721145f, 1f, 0.427451f, 1f) },
+    { TileType.All, new Color(0.8773585f, 0.8773585f, 0.8773585f, 1f) },
+    { TileType.Defense, new Color(0.3490566f, 0.3490566f, 0.3490566f, 1f) },
 
+    };
     [Header("Tag lists")]
-    public List<string> GoodTags= new List<string>();
+    public List<string> GoodTags = new List<string>();
     public List<string> NeutralTags = new List<string>();
     public List<string> EnemyTags = new List<string>();
     public List<string> IgnoreTags = new List<string>();
@@ -56,17 +67,25 @@ public class StaticDataManager : MonoBehaviour
 
         }
     }
-    public bool isOkTarget(bool IsPlayer,string tag)
+    public bool isOkTarget(bool IsPlayer, string tag)
     {
-      /*  Debug.Log(IsPlayer + " " + tag);
-        Debug.Log(IsPlayer + " " + EnemyTags.Contains(tag) + " " + !IgnoreTags.Contains(tag));
-        Debug.Log(!IsPlayer + " " + GoodTags.Contains(tag) + " " + !IgnoreTags.Contains(tag));
-        Debug.Log((tag != null) + " " + (tag != "")+" "+(tag != "Untagged"));
-        Debug.Log((IsPlayer && EnemyTags.Contains(tag) && !IgnoreTags.Contains(tag))+"-"+ (tag != null && tag != ""));*/
+        /*  Debug.Log(IsPlayer + " " + tag);
+          Debug.Log(IsPlayer + " " + EnemyTags.Contains(tag) + " " + !IgnoreTags.Contains(tag));
+          Debug.Log(!IsPlayer + " " + GoodTags.Contains(tag) + " " + !IgnoreTags.Contains(tag));
+          Debug.Log((tag != null) + " " + (tag != "")+" "+(tag != "Untagged"));
+          Debug.Log((IsPlayer && EnemyTags.Contains(tag) && !IgnoreTags.Contains(tag))+"-"+ (tag != null && tag != ""));*/
         return (((IsPlayer && EnemyTags.Contains(tag) && !IgnoreTags.Contains(tag)) ||
-            (!IsPlayer && GoodTags.Contains(tag) && !IgnoreTags.Contains(tag)))&&(tag!=null&&tag!=""));
+            (!IsPlayer && GoodTags.Contains(tag) && !IgnoreTags.Contains(tag))) && (tag != null && tag != ""));
 
 
     }
-  
+    public static Color TileToColor(TileType tt)
+    {
+        Color c = Color.white;
+        if (yo.TryGetValue(tt, out c))
+        {
+            return c;
+        }
+        return c;
+    }
 }

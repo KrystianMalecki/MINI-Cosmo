@@ -22,7 +22,7 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
         pos_x = xx;
         pos_y = yy;
         type = tt;
-        img.color = ShipInventoryEditor.TileToColor(tt);
+        img.color = StaticDataManager.TileToColor(tt);
         free = true;
     }
     public void Clicked()

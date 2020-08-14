@@ -22,6 +22,25 @@ public class ShipData
     public float ERechargeWait = 1;
     [Tooltip("times 10 per second")]
     public float ERecharge = 0.1f;
+    public void ResetToBase()
+    {
+        ResetStats();
+         shipInventory = BasedOn.data.shipInventory;
+
+    }
+    public void ResetStats()
+    {
+        HP = BasedOn.data.HP;
+        maxHP = BasedOn.data.maxHP;
+        speed = BasedOn.data.speed;
+        rotationSpeed = BasedOn.data.rotationSpeed;
+        maxEnergy = BasedOn.data.maxEnergy;
+        energy = BasedOn.data.energy;
+        ERechargeWait = BasedOn.data.ERechargeWait;
+        ERecharge = BasedOn.data.ERecharge;
+    
+
+    }
 }
 [Serializable]
 [CreateAssetMenu(fileName = "New Ship Data Base", menuName = "Custom/New Ship Data Base")]

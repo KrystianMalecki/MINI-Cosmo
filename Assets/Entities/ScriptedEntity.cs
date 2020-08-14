@@ -18,7 +18,7 @@ public class ScriptedEntity : Entity
         base.Start();
         data.energy = data.maxEnergy;
         AddEnergy(0);
-       
+
     }
     public override void Damage(float value)
     {
@@ -46,7 +46,7 @@ public class ScriptedEntity : Entity
         }
         if (energytxt != null)
         {
-            energytxt.text = StaticDataManager.instance.TMProFormater + "Energy: " + data.energy.ToString("0") + "/" + data.energy.ToString("0");
+            energytxt.text = StaticDataManager.instance.TMProFormater + "Energy: " + data.energy.ToString("0") + "/" + data.maxEnergy.ToString("0");
             if (energybar != null)
             {
                 energybar.fillAmount = data.energy / data.maxEnergy;
@@ -65,10 +65,21 @@ public class ScriptedEntity : Entity
 
         while (data.energy > data.maxEnergy)
         {
-            AddEnergy(-0.1f);
+            if (data.energy - 0.1f < data.maxEnergy)
+            {
+                data.energy = data.maxEnergy;
+                AddEnergy(0);
+
+            }
+            else
+            {
+                AddEnergy(-0.1f);
+            }
+
             yield return new WaitForSeconds(0.1f);
 
         }
+
 
     }
     IEnumerator EnergycountDown()
@@ -76,7 +87,7 @@ public class ScriptedEntity : Entity
         StopCoroutine("EnergyOverload");
 
         yield return new WaitForSeconds(data.ERechargeWait);
-        while (data.energy<= data.maxEnergy)
+        while (data.energy <= data.maxEnergy)
         {
             AddEnergy(data.ERecharge);
             yield return new WaitForSeconds(0.1f);

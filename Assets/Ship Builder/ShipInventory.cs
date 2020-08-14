@@ -39,7 +39,7 @@ public class STline
         line = lin;
     }
 }
-public enum TileType { Null, Power, Weapon, Engine, UI_SLOT_BOX, UI_TRASH }
+public enum TileType { Null, Power, Weapon, Engine,All,Defense, UI_SLOT_BOX, UI_TRASH }
 [Serializable]
 public class ShipTile
 {

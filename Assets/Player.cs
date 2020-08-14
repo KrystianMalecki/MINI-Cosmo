@@ -13,7 +13,7 @@ public class Player : ScriptedEntity, ICollector
         base.Damage(value);
         if (hptxt != null)
         {
-            hptxt.text = StaticDataManager.instance.TMProFormater + "HP: " + HP.ToString("0") + "/" + MaxHP.ToString("0");
+            hptxt.text = StaticDataManager.instance.TMProFormater + "HP: " + data.HP.ToString("0") + "/" + data.maxHP.ToString("0");
         }
     }
     public void LateUpdate()

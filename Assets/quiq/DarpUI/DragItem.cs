@@ -45,7 +45,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         }
         bck.GetComponent<Canvas>().sortingLayerName = "ui";
-        Color c = ShipInventoryEditor.TileToColor(eqitem.ttype);
+        Color c = StaticDataManager.TileToColor(eqitem.ttype);
         c.a = 0.4f;
         bck.color = c;
         bck.enabled = false;

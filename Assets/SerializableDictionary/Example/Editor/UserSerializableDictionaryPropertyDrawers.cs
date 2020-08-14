@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(UIDictionary))]
     [CustomPropertyDrawer(typeof(ItemDictionary))]
 [CustomPropertyDrawer(typeof(MEDSstring))]
-
+[CustomPropertyDrawer(typeof(TileColors))]
 public class AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer {}
 
 

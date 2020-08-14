@@ -12791,19 +12791,23 @@ MonoBehaviour:
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 1
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 2
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 3
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 4
+          item:
+            id: 
+            count: 0
+        - type: 5
           item:
             id: 
             count: 0
@@ -12812,19 +12816,23 @@ MonoBehaviour:
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 1
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 2
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 3
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 4
+          item:
+            id: 
+            count: 0
+        - type: 5
           item:
             id: 
             count: 0
@@ -12833,61 +12841,23 @@ MonoBehaviour:
           item:
             id: 
             count: 0
-        - type: 0
-          item:
-            id: 
-            count: 0
         - type: 1
           item:
             id: 
             count: 0
-        - type: 1
+        - type: 2
           item:
             id: 
             count: 0
-        - type: 0
+        - type: 3
           item:
             id: 
             count: 0
-      - line:
-        - type: 0
+        - type: 4
           item:
             id: 
             count: 0
-        - type: 0
-          item:
-            id: 
-            count: 0
-        - type: 1
-          item:
-            id: 
-            count: 0
-        - type: 1
-          item:
-            id: 
-            count: 0
-        - type: 0
-          item:
-            id: 
-            count: 0
-      - line:
-        - type: 0
-          item:
-            id: 
-            count: 0
-        - type: 0
-          item:
-            id: 
-            count: 0
-        - type: 0
-          item:
-            id: 
-            count: 0
-        - type: 0
-          item:
-            id: 
-            count: 0
-        - type: 0
+        - type: 5
           item:
             id: 
             count: 0
@@ -18864,6 +18834,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TMProFormater: <mspace=3.7>
   CombatMode: 0
+  colors:
+    m_keys: 010000000200000003000000040000000500000000000000
+    m_values:
+    - {r: 0.9721145, g: 1, b: 0.427451, a: 1}
+    - {r: 1, g: 0.4700375, b: 0.427451, a: 1}
+    - {r: 0.56348926, g: 1, b: 0.427451, a: 1}
+    - {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
+    - {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    - {r: 0, g: 0, b: 0, a: 1}
   GoodTags:
   - Player
   - PDrone
@@ -21875,8 +21854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89ef99a6d846a34fa5b68a9b1d17db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
-  MaxHP: 20
   r2d: {fileID: 1385714612}
   hpbar: {fileID: 0}
   data:
@@ -32659,8 +32636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd11f94393b35a4fa9c6fa7a2c41781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
-  MaxHP: 100
   r2d: {fileID: 1719185909}
   hpbar: {fileID: 162825637}
   data:
@@ -32673,28 +32648,11 @@ MonoBehaviour:
             item:
               id: 
               count: 0
-          - type: 0
+          - type: 2
             item:
               id: 
               count: 0
-          - type: 0
-            item:
-              id: 
-              count: 0
-          - type: 0
-            item:
-              id: 
-              count: 0
-        - line:
-          - type: 0
-            item:
-              id: 
-              count: 0
-          - type: 0
-            item:
-              id: 
-              count: 0
-          - type: 0
+          - type: 4
             item:
               id: 
               count: 0
@@ -32703,19 +32661,36 @@ MonoBehaviour:
               id: 
               count: 0
         - line:
-          - type: 0
+          - type: 4
             item:
               id: 
               count: 0
-          - type: 0
+          - type: 2
             item:
               id: 
               count: 0
-          - type: 0
+          - type: 3
             item:
               id: 
               count: 0
-          - type: 0
+          - type: 4
+            item:
+              id: 
+              count: 0
+        - line:
+          - type: 4
+            item:
+              id: 
+              count: 0
+          - type: 1
+            item:
+              id: 
+              count: 0
+          - type: 5
+            item:
+              id: 
+              count: 0
+          - type: 4
             item:
               id: 
               count: 0
@@ -32724,11 +32699,11 @@ MonoBehaviour:
             item:
               id: 
               count: 0
-          - type: 0
+          - type: 4
             item:
               id: 
               count: 0
-          - type: 0
+          - type: 4
             item:
               id: 
               count: 0
