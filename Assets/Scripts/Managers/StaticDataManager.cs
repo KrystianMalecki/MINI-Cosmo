@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 [Serializable]
 public class TileColors : SerializableDictionary<TileType, Color> { }
 public class StaticDataManager : MonoBehaviour
@@ -16,8 +17,9 @@ public class StaticDataManager : MonoBehaviour
     { TileType.Engine, new Color(0.5157232f, 1f, 0.4292453f, 1f) },
     { TileType.Weapon, new Color(1f, 0.4700375f, 0.427451f, 1f) },
     { TileType.Power, new Color(0.9721145f, 1f, 0.427451f, 1f) },
-    { TileType.All, new Color(0.8773585f, 0.8773585f, 0.8773585f, 1f) },
-    { TileType.Defense, new Color(0.3490566f, 0.3490566f, 0.3490566f, 1f) },
+    { TileType.All, new Color(0.4196f, 1f, 0.843f, 1f) },
+
+    { TileType.Defense,  new Color(0.8773585f, 0.8773585f, 0.8773585f, 1f) },
 
     };
     [Header("Tag lists")]
@@ -32,6 +34,12 @@ public class StaticDataManager : MonoBehaviour
     public GameObject DieExplosion;
     public GameObject BulletBase;
     public GameObject CSOInfo;
+    [Header("Displays")]
+
+    public TextMeshProUGUI hptxt;
+    public Image hpbar;
+    public TextMeshProUGUI energytxt;
+    public Image energybar;
 
     public void SpawnItemP(Vector2 position, ItemData iD)
     {

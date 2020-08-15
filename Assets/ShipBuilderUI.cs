@@ -10,7 +10,7 @@ public class ShipBuilderUI : UIBase
     public GameObject TileBase;
     public GameObject DragItemBase;
 
-    public ShipInventory si = new ShipInventory();
+    public ShipData selectedShip ;
 
     public List<ItemSlotBox> boxes = new List<ItemSlotBox>();
 
@@ -24,6 +24,7 @@ public class ShipBuilderUI : UIBase
 
     public override void OpenThis()
     {
+      //  selectedShip = 
         base.OpenThis();
         displayGrid();
         getItems();
@@ -75,13 +76,10 @@ public class ShipBuilderUI : UIBase
             }
         }
     }
-    public void Trasher(DragItem di)
-    {
-
-    }
+    
     public void displayGrid()
     {
-        transformer.constraintCount = si.inv.inv.Count;
+        transformer.constraintCount = selectedShip.shipInventory.inv.inv.Count;
         StringBuilder sb = new StringBuilder();
 
         int c = 0;
@@ -89,24 +87,24 @@ public class ShipBuilderUI : UIBase
         {
             boxes[u].Hide();
         }
-        for (int a = 0; a < si.inv.inv.Count; a++)
+        for (int a = 0; a < selectedShip.shipInventory.inv.inv.Count; a++)
         {
-            for (int b = 0; b < si.inv.inv[a].line.Count; b++)
+            for (int b = 0; b < selectedShip.shipInventory.inv.inv[a].line.Count; b++)
             {
                 if (c < boxes.Count)
                 {
-                    sb.Append((int)si.inv.inv[a].line[b].type);
+                    sb.Append((int)selectedShip.shipInventory.inv.inv[a].line[b].type);
                     ItemSlotBox isb = boxes[c];
-                    isb.Setup(this, a, b, si.inv.inv[a].line[b].type);
+                    isb.Setup(this, a, b, selectedShip.shipInventory.inv.inv[a].line[b].type);
 
                     //   boxes.Add(isb);
                 }
                 else
                 {
-                    sb.Append((int)si.inv.inv[a].line[b].type);
+                    sb.Append((int)selectedShip.shipInventory.inv.inv[a].line[b].type);
                     GameObject go = Instantiate(TileBase, transformer.transform);
                     ItemSlotBox isb = go.GetComponent<ItemSlotBox>();
-                    isb.Setup(this, a, b, si.inv.inv[a].line[b].type);
+                    isb.Setup(this, a, b, selectedShip.shipInventory.inv.inv[a].line[b].type);
                     boxes.Add(isb);
                 }
 
@@ -115,15 +113,15 @@ public class ShipBuilderUI : UIBase
             sb.Append("\n");
         }
         Debug.Log(sb);
-        for (int a = 0; a < si.inv.inv.Count; a++)
+        for (int a = 0; a < selectedShip.shipInventory.inv.inv.Count; a++)
         {
-            for (int b = 0; b < si.inv.inv[a].line.Count; b++)
+            for (int b = 0; b < selectedShip.shipInventory.inv.inv[a].line.Count; b++)
             {
-                if (si.inv.inv[a].line[b].item != null)
+                if (selectedShip.shipInventory.inv.inv[a].line[b].item != null)
                 {
-                    if (si.inv.inv[a].line[b].item.id != "")
+                    if (selectedShip.shipInventory.inv.inv[a].line[b].item.id != "")
                     {
-                        DragItem di = makeDI(si.inv.inv[a].line[b].item);
+                        DragItem di = makeDI(selectedShip.shipInventory.inv.inv[a].line[b].item);
                         getAt(a, b).Add(di);
 
                     }

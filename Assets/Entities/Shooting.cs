@@ -10,7 +10,12 @@ public class WeaponEq
     public BulletData Data;
     public Transform ShootPoint;
     public KeyCode FireButton = KeyCode.Keypad0;
-    public float FireRateTimer;
+    public float FireRateTimer=0;
+    public WeaponEq(BulletData data, Transform tr)
+    {
+        Data = data;
+        ShootPoint = tr;
+    }
 }
 public class Shooting : MonoBehaviour
 {

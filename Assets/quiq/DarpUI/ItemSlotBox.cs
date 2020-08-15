@@ -100,7 +100,7 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
         else
         {
             freerer(true);
-            sie.si.inv.inv[pos_x].line[pos_y].item = null;
+            sie.selectedShip.shipInventory.inv.inv[pos_x].line[pos_y].item = null;
             ditem = null;
         }
     }

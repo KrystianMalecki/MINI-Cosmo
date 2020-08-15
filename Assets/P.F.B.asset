@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771c50cc250e73442bff00ad302fd713, type: 3}
+  m_Name: P.F.B
+  m_EditorClassIdentifier: 
+  SGD:
+    layers:
+    - color: {r: 1, g: 1, b: 1, a: 1}
+      texture: {fileID: 21300000, guid: 5ce7c1d1698cb344d964f2739a61da02, type: 3}
+    icon: {fileID: 21300000, guid: 5ce7c1d1698cb344d964f2739a61da02, type: 3}
+    trailPositions:
+    - color: {r: 4, g: 0, b: 0, a: 1}
+      offset: {x: 0, y: -0.32, z: 0}
+    shootPoints:
+    - {x: -0.24, y: 0.14, z: 0, w: 0}
+    - {x: 0.24, y: 0.14, z: 0, w: 0}
+  shipInventory:
+    inv:
+      inv:
+      - line:
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+      - line:
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 2
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 2
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+      - line:
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 2
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 2
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+      - line:
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 1
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 1
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+      - line:
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 1
+          item:
+            id: 
+            count: 0
+        - type: 3
+          item:
+            id: 
+            count: 0
+        - type: 1
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+      - line:
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 3
+          item:
+            id: 
+            count: 0
+        - type: 5
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+      - line:
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+  maxHP: 25
+  speed: 5
+  rotationSpeed: 5
+  maxEnergy: 25
+  ERechargeWait: 1.5
+  ERecharge: 0.1

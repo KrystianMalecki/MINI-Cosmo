@@ -6,8 +6,11 @@ using System;
 
 public class ShipData
 {
+    [Header("Changables")]
+    public string name;
+    [Header("Data")]
     public ShipDataBase BasedOn;
-    public ShipInventory shipInventory;
+    public ShipInventory shipInventory = new ShipInventory();
     [Header("hps")]
     public float HP;
     public float maxHP;
@@ -25,28 +28,19 @@ public class ShipData
     public void ResetToBase()
     {
         ResetStats();
-         shipInventory = BasedOn.data.shipInventory;
+         shipInventory = BasedOn.shipInventory;
 
     }
     public void ResetStats()
     {
-        HP = BasedOn.data.HP;
-        maxHP = BasedOn.data.maxHP;
-        speed = BasedOn.data.speed;
-        rotationSpeed = BasedOn.data.rotationSpeed;
-        maxEnergy = BasedOn.data.maxEnergy;
-        energy = BasedOn.data.energy;
-        ERechargeWait = BasedOn.data.ERechargeWait;
-        ERecharge = BasedOn.data.ERecharge;
+        maxHP = BasedOn.maxHP;
+        speed = BasedOn.speed;
+        rotationSpeed = BasedOn.rotationSpeed;
+        maxEnergy = BasedOn.maxEnergy;
+        ERechargeWait = BasedOn.ERechargeWait;
+        ERecharge = BasedOn.ERecharge;
     
 
     }
 }
-[Serializable]
-[CreateAssetMenu(fileName = "New Ship Data Base", menuName = "Custom/New Ship Data Base")]
-public class ShipDataBase : ScriptableObject
-{
-    [Header("ignore BasedOn here")]
-    public ShipData data;
 
-}

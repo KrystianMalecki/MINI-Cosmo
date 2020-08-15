@@ -11,6 +11,7 @@ public class ShipInventory
    
     [SerializeField]
     public ShipInventoryProp inv=new  ShipInventoryProp();
+   
     public void OnValidate()
     {
         if (inv == null)
@@ -20,6 +21,16 @@ public class ShipInventory
         else if (inv.inv.Count == 0)
         {
             inv = new ShipInventoryProp();
+
+        }
+        else if (inv.inv[0] == null)
+        {
+            inv.inv[0] = new STline(new List<ShipTile> { new ShipTile(TileType.Null) });
+
+        }
+        else if (inv.inv[0].line.Count == 0)
+        {
+            inv.inv[0] = new STline(new List<ShipTile>{new ShipTile(TileType.Null) });
 
         }
     }
