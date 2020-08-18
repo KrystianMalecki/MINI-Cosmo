@@ -19,10 +19,15 @@ public class Item : ScriptableObject
 public class ItemData
 {
     public string id;
-    public int count;
-    public ItemData(string s,int i)
+    public int count=1;
+    public ItemData(string s,int i=1)
     {
         id = s;
         count = i;
+    }
+    public ItemData copy()
+    {
+        ItemData idd = new ItemData(this.id, this.count);
+        return idd;
     }
 }

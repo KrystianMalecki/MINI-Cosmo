@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShipHangar : MonoBehaviour
 {
@@ -13,8 +10,8 @@ public class ShipHangar : MonoBehaviour
     public GameObject spriteLayerBase;
     public GameObject trailLayerBase;
     public GameObject shootPointBase;
-    
-
+    public GameObject player;
+    public Player pl;
     public void Awake()
     {
         if (instance != null)
@@ -32,11 +29,11 @@ public class ShipHangar : MonoBehaviour
     public GameObject makePlayerShip(ShipData data, Vector3 position)
     {
         GameObject go = Instantiate(playerShipBase, position, Quaternion.identity);
-        for(int a = 0; a < data.BasedOn.SGD.layers.Count; a++)
+        for (int a = 0; a < data.BasedOn.SGD.layers.Count; a++)
         {
             GameObject spr = Instantiate(spriteLayerBase, go.transform);
-            SpriteRenderer sr =spr.GetComponent<SpriteRenderer>();
-            sr.sortingOrder = (a+1);
+            SpriteRenderer sr = spr.GetComponent<SpriteRenderer>();
+            sr.sortingOrder = (a + 1);
             sr.material = Instantiate(sr.material);
 
             sr.sprite = data.BasedOn.SGD.layers[a].texture;
@@ -48,16 +45,16 @@ public class ShipHangar : MonoBehaviour
         {
             GameObject spr = Instantiate(trailLayerBase, go.transform);
             TrailRenderer tr = spr.GetComponent<TrailRenderer>();
-           tr.transform.localPosition = data.BasedOn.SGD.trailPositions[a].offset;
+            tr.transform.localPosition = data.BasedOn.SGD.trailPositions[a].offset;
             tr.material = Instantiate(tr.material);
             tr.material.SetColor("_color", data.BasedOn.SGD.trailPositions[a].color);
         }
         for (int a = 0; a < data.BasedOn.SGD.shootPoints.Count; a++)
         {
             GameObject sp = Instantiate(shootPointBase, go.transform);
-            sp.transform.localPosition =new Vector3( data.BasedOn.SGD.shootPoints[a].x, data.BasedOn.SGD.shootPoints[a].y, data.BasedOn.SGD.shootPoints[a].z);
+            sp.transform.localPosition = new Vector3(data.BasedOn.SGD.shootPoints[a].x, data.BasedOn.SGD.shootPoints[a].y, data.BasedOn.SGD.shootPoints[a].z);
             sp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, data.BasedOn.SGD.shootPoints[a].w));
-            s.Weapons.Add(new WeaponEq(null,sp.transform));
+            s.Weapons.Add(new WeaponEq(null, sp.transform));
         }
 
         Player p = go.GetComponent<Player>();
@@ -70,9 +67,12 @@ public class ShipHangar : MonoBehaviour
 
         return go;
     }
+
     public void Start()
     {
-       // ships[0].ResetToBase();
-        makePlayerShip(ships[0], new Vector3(0, 0, 0));
+        // ships[0].ResetToBase();
+        player = makePlayerShip(ships[0], new Vector3(0, 0, 0));
+        pl = player.GetComponent<Player>();
     }
+
 }

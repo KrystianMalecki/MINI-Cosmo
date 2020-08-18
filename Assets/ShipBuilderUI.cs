@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Data.Common;
+﻿using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +8,7 @@ public class ShipBuilderUI : UIBase
     public GameObject TileBase;
     public GameObject DragItemBase;
 
-    public ShipData selectedShip ;
+    public ShipData selectedShip;
 
     public List<ItemSlotBox> boxes = new List<ItemSlotBox>();
 
@@ -24,7 +22,7 @@ public class ShipBuilderUI : UIBase
 
     public override void OpenThis()
     {
-      //  selectedShip = 
+        //  selectedShip = 
         base.OpenThis();
         displayGrid();
         getItems();
@@ -65,18 +63,25 @@ public class ShipBuilderUI : UIBase
 
 
     }
+    public void Count()
+    {
+        selectedShip.CountStats();
+        ShipHangar.instance.pl.Damage(0);
+        ShipHangar.instance.pl.AddEnergy(0);
+
+    }
     public void getItems()
     {
         eqitems.Clear();
-        for(int a = 0; a < Inventory.instance.items.Count; a++)
+        for (int a = 0; a < Inventory.instance.current_inv.items.Count; a++)
         {
-            if(Inventory.instance.GetItemInfo(Inventory.instance.items[a].id)is EqItem)
+            if (Inventory.instance.GetItemInfo(Inventory.instance.current_inv.items[a].id) is EqItem)
             {
-                eqitems.Add(Inventory.instance.items[a]);
+                eqitems.Add(Inventory.instance.current_inv.items[a]);
             }
         }
     }
-    
+
     public void displayGrid()
     {
         transformer.constraintCount = selectedShip.shipInventory.inv.inv.Count;
@@ -113,6 +118,12 @@ public class ShipBuilderUI : UIBase
             sb.Append("\n");
         }
         Debug.Log(sb);
+        for(int j =0;j< ditems.Count; j++)
+        {
+            Destroy(ditems[j].gameObject);
+            ditems.RemoveAt(j);
+            j--;
+        }
         for (int a = 0; a < selectedShip.shipInventory.inv.inv.Count; a++)
         {
             for (int b = 0; b < selectedShip.shipInventory.inv.inv[a].line.Count; b++)
@@ -121,9 +132,11 @@ public class ShipBuilderUI : UIBase
                 {
                     if (selectedShip.shipInventory.inv.inv[a].line[b].item.id != "")
                     {
-                        DragItem di = makeDI(selectedShip.shipInventory.inv.inv[a].line[b].item);
-                        getAt(a, b).Add(di);
-
+                        if (selectedShip.shipInventory.inv.inv[a].line[b].item.id != null)
+                        {
+                            DragItem di = makeDI(selectedShip.shipInventory.inv.inv[a].line[b].item);
+                            getAt(a, b).Add(di);
+                        }
                     }
                 }
 

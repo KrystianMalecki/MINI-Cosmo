@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void OnEnable()
     {
-        
+        if (PlayerPrefs.GetString("new_game") == "true")
+        {
+
+          
+        }
+        ShipHangar.instance.ships = new List<ShipData>();
+        ShipHangar.instance.ships = SaveMaster.instance.currentSave.hangar_ships;
+        Inventory.instance.current_inv = ShipHangar.instance.ships[0].itemInventory;
     }
 }

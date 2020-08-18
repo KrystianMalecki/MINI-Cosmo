@@ -29,7 +29,7 @@ public class InventoryUI : UIBase
     }
     public void displayItems()
     {
-        List<ItemData> items = Inventory.instance.items;
+        List<ItemData> items = Inventory.instance.current_inv.items;
 
         int offset = 0;
         for (int a = 0; a < boxes.Count; a++)
@@ -57,7 +57,7 @@ public class InventoryUI : UIBase
     }
     public void displayInfo(int id)
     {
-        ItemData idata = Inventory.instance.items[id];
+        ItemData idata = Inventory.instance.current_inv.items[id];
         Item it = Inventory.instance.GetItemInfo(idata.id);
         IIB.Setup(it.name,it.description,it.value.ToString("0"),idata.count.ToString("0"),it.texture);
     }

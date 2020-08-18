@@ -13,10 +13,10 @@ public class ScriptedEntity : Entity
     public Image energybar;
     public override void Start()
     {
-        data.HP = data.maxHP;
+        data.HP = data.stats.maxHP;
         Damage(0);
         base.Start();
-        data.energy = data.maxEnergy;
+        data.energy = data.stats.maxEnergy;
         AddEnergy(0);
 
     }
@@ -26,7 +26,7 @@ public class ScriptedEntity : Entity
         data.HP -= value;
         if (hpbar != null)
         {
-            hpbar.fillAmount = data.HP / data.maxHP;
+            hpbar.fillAmount = data.HP / data.stats.maxHP;
         }
         if (data.HP <= 0)
         {
@@ -38,7 +38,7 @@ public class ScriptedEntity : Entity
     public void AddEnergy(float number)
     {
         data.energy += number;
-        if (data.energy > data.maxEnergy)
+        if (data.energy > data.stats.maxEnergy)
         {
             StopCoroutine("EnergyOverload");
 
@@ -46,10 +46,10 @@ public class ScriptedEntity : Entity
         }
         if (energytxt != null)
         {
-            energytxt.text = StaticDataManager.instance.TMProFormater + "Energy: " + data.energy.ToString("0") + "/" + data.maxEnergy.ToString("0");
+            energytxt.text = StaticDataManager.instance.TMProFormater + "Energy: " + data.energy.ToString("0") + "/" + data.stats.maxEnergy.ToString("0");
             if (energybar != null)
             {
-                energybar.fillAmount = data.energy / data.maxEnergy;
+                energybar.fillAmount = data.energy / data.stats.maxEnergy;
             }
         }
         if (number < 0)
@@ -63,11 +63,11 @@ public class ScriptedEntity : Entity
 
         StopCoroutine("EnergycountDown");
 
-        while (data.energy > data.maxEnergy)
+        while (data.energy > data.stats.maxEnergy)
         {
-            if (data.energy - 0.1f < data.maxEnergy)
+            if (data.energy - 0.1f < data.stats.maxEnergy)
             {
-                data.energy = data.maxEnergy;
+                data.energy = data.stats.maxEnergy;
                 AddEnergy(0);
 
             }
@@ -86,10 +86,10 @@ public class ScriptedEntity : Entity
     {
         StopCoroutine("EnergyOverload");
 
-        yield return new WaitForSeconds(data.ERechargeWait);
-        while (data.energy <= data.maxEnergy)
+        yield return new WaitForSeconds(data.stats.ERechargeWait);
+        while (data.energy <= data.stats.maxEnergy)
         {
-            AddEnergy(data.ERecharge);
+            AddEnergy(data.stats.ERecharge);
             yield return new WaitForSeconds(0.1f);
 
         }
@@ -97,6 +97,6 @@ public class ScriptedEntity : Entity
     }
     public void LookAt(Vector2 v2)
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((v2.y - transform.position.y), (v2.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * data.rotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2((v2.y - transform.position.y), (v2.x - transform.position.x)) * Mathf.Rad2Deg - 90), Time.deltaTime * data.stats.rotationSpeed);
     }
 }

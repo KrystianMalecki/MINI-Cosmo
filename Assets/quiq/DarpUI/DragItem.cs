@@ -38,6 +38,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     public void Setup()
     {
+        idata = idata.copy();
        Item item = Inventory.instance.GetItemInfo(idata.id);
         if ((item is EqItem))
         {

@@ -47,6 +47,7 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
                     sie.ditems.ForEach(x => x.cg.blocksRaycasts = true);
                     sie.getItems();
                     sie.displayItems();
+
                     return;
                 }
 
@@ -65,6 +66,7 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
     }
     public void Add(DragItem di)
     {
+
         if (type == TileType.UI_SLOT_BOX)
         {
             ditem = di;
@@ -74,7 +76,6 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
 
             ditem.currentSlot = this;
             ditem.gameObject.transform.localPosition = Vector3.zero;
-
         }
         else
         {
@@ -86,8 +87,9 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
 
             ditem.currentSlot = this;
             ditem.gameObject.transform.localPosition = Vector3.zero;
+            sie.selectedShip.shipInventory.inv.inv[pos_x].line[pos_y].item = di.idata.copy();
+
             freerer(false);
-            //  sie.si.inv.inv[pos_x].line[pos_y].item = ditem.idata;
         }
     }
     public void Remove()
@@ -100,7 +102,7 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
         else
         {
             freerer(true);
-            sie.selectedShip.shipInventory.inv.inv[pos_x].line[pos_y].item = null;
+            sie.selectedShip.shipInventory.inv.inv[pos_x].line[pos_y].item = new ItemData("",0);
             ditem = null;
         }
     }
@@ -130,6 +132,8 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
 
 
         bool isOk = true;
+        
+
         for (int x = 0; x < dhandler.eqitem.size.x; x++)
         {
             for (int y = 0; y < dhandler.eqitem.size.y; y++)
@@ -142,8 +146,23 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
                         isOk = false;
                         break;
                     }
+                    if (sie.getAt(pos_x + x, pos_y + y).type==TileType.Null)
+                    {
+
+                        isOk = false;
+                        break;
+                    }
+                    if (sie.getAt(pos_x + x, pos_y + y).type == TileType.All)
+                    {
+                        continue;
+                    }
+                    if (dhandler.eqitem.ttype == TileType.All)
+                    {
+                        return true;
+                    }
                     if (sie.getAt(pos_x + x, pos_y + y).type != dhandler.eqitem.ttype)
                     {
+
                         isOk = false;
                         break;
                     }
@@ -159,6 +178,6 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
 
     }
 
-  
-    
+
+
 }

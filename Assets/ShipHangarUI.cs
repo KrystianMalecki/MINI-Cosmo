@@ -9,6 +9,8 @@ public class ShipHangarUI : UIBase
     public GameObject ShipBoxBase;
 
     public ShipHangar hangar;
+    public ShipData selectedData;
+    public ShipBuilderUI sbui;
     public List<ShipBox> boxes = new List<ShipBox>();
     public TextMeshProUGUI namer;
     public TextMeshProUGUI hp;
@@ -22,17 +24,40 @@ public class ShipHangarUI : UIBase
     {
         base.OpenThis();
         displayShips();
-        infobox.SetActive(false);
+        if (selectedData.BasedOn == null)
+        {
+
+
+            infobox.SetActive(false);
+        }
+        else
+        {
+            infobox.SetActive(true);
+
+            ShowSelected();
+        }
     }
     public void Clicked(int id)
     {
         infobox.SetActive(true);
-        img.sprite = hangar.ships[id].BasedOn.SGD.icon;
-        namer.text = StaticDataManager.instance.TMProFormater + hangar.ships[id].name;
-        hp.text = StaticDataManager.instance.TMProFormater +"HP:"+ hangar.ships[id].HP.ToString("0")+"/"+ hangar.ships[id].maxHP.ToString("0");
-        energy.text = StaticDataManager.instance.TMProFormater + "Energy:" + hangar.ships[id].energy.ToString("0") + "/" + hangar.ships[id].maxEnergy.ToString("0");
-        speed.text = StaticDataManager.instance.TMProFormater + "Speed: [ZMIEŃ TO]";
+
+        selectedData = hangar.ships[id];
+        ShowSelected();
+    }
+    public void ShowSelected()
+    {
+        infobox.SetActive(true);
+
+        img.sprite = selectedData.BasedOn.SGD.icon;
+        namer.text = StaticDataManager.instance.TMProFormater + selectedData.name;
+        hp.text = StaticDataManager.instance.TMProFormater + "HP:" + selectedData.HP.ToString("0") + "/" + selectedData.stats.maxHP.ToString("0");
+        energy.text = StaticDataManager.instance.TMProFormater + "Energy:" + selectedData.energy.ToString("0") + "/" + selectedData.stats.maxEnergy.ToString("0");
+        speed.text = StaticDataManager.instance.TMProFormater + "Spd:" + selectedData.stats.speed.ToString("0") + " Rot Spd:" + selectedData.stats.rotationSpeed.ToString("0");
         space.text = StaticDataManager.instance.TMProFormater + "Space: [ZMIEŃ TO]";
+    }
+    public void Edit()
+    {
+        sbui.selectedShip = selectedData;
 
     }
     public void displayShips()

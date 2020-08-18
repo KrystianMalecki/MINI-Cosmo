@@ -10,8 +10,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     public ItemDictionary ItemStorage = new ItemDictionary();
-    public List<ItemData> items = new List<ItemData>();
-    public int max_size = 10;
+    public ItemInventory current_inv;
     //  public int max_stack_size=999;
     public void Awake()
     {
@@ -32,6 +31,7 @@ public class Inventory : MonoBehaviour
     }
     public bool AddItem(ItemData idata)
     {
+        Debug.Log(idata);
         return AddItem(idata.id, idata.count);
     }
     public bool AddItem(string id, int num)
@@ -41,29 +41,29 @@ public class Inventory : MonoBehaviour
 
 
 
-        int index = items.FindIndex(0, x => x.id == id);
+        int index = current_inv.items.FindIndex(0, x => x.id == id);
         if (index == -1)
         {
-            if (items.Count + 1 > max_size)
+            if (current_inv.items.Count + 1 > current_inv.max_size)
             {
                 return false;
             }
-            items.Add(new ItemData(id, num));
+            current_inv.items.Add(new ItemData(id, num));
             return true;
         }
         else
         {
             if (i.isStackable)
             {
-                items[index].count += num;
+                current_inv.items[index].count += num;
             }
             else
             {
-                if (items.Count + 1 > max_size)
+                if (current_inv.items.Count + 1 > current_inv.max_size)
                 {
                     return false;
                 }
-                items.Add(new ItemData(id, 1));
+                current_inv.items.Add(new ItemData(id,num));
             }
             return true;
         }
@@ -71,7 +71,10 @@ public class Inventory : MonoBehaviour
     public Item GetItemInfo(string id)
     {
         Item i = null;
-
+        if (id == null)
+        {
+            return i;
+        }
         if (!ItemStorage.TryGetValue(id, out i))
         {
             Debug.LogError("Can't find item with id:" + id);
@@ -80,16 +83,22 @@ public class Inventory : MonoBehaviour
     }
     public void RemoveItem(ItemData idata)
     {
-        int a = items.FindIndex(x => x.id == idata.id);
+        int a = current_inv.items.FindIndex(x => x.id == idata.id);
         if (a == -1)
         {
             return;
         }
-        items[a].count -= idata.count;
-        if (items[a].count < 1)
+        current_inv.items[a].count -= idata.count;
+        if (current_inv.items[a].count < 1)
         {
-            items.RemoveAt(a);
+            current_inv.items.RemoveAt(a);
         }
     }
+}
+[Serializable]
+public class ItemInventory
+{
+    public List<ItemData> items = new List<ItemData>();
+    public int max_size = 10;
 }
 

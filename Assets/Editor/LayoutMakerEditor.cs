@@ -72,7 +72,7 @@ public class LayoutMakerEditor : PropertyDrawer
 
             for (int b = 0; b < lineProp.arraySize; b++)
             {
-                GUI.backgroundColor = lineProp.GetArrayElementAtIndex(b).boolValue ? Color.white : Color.grey;
+                GUI.backgroundColor = lineProp.GetArrayElementAtIndex(b).boolValue ? Color.green : Color.black;
                 if (GUI.Button(new Rect(r.x + d, r.y + c, 20, 20), /*((int)lineProp.GetArrayElementAtIndex(b).boolValue).ToString()*/""))
                 {
                     lineProp.GetArrayElementAtIndex(b).boolValue = !lineProp.GetArrayElementAtIndex(b).boolValue;

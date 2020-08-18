@@ -13,7 +13,7 @@ public class Player : ScriptedEntity, ICollector
         base.Damage(value);
         if (hptxt != null)
         {
-            hptxt.text = StaticDataManager.instance.TMProFormater + "HP: " + data.HP.ToString("0") + "/" + data.maxHP.ToString("0");
+            hptxt.text = StaticDataManager.instance.TMProFormater + "HP: " + data.HP.ToString("0") + "/" + data.stats.maxHP.ToString("0");
         }
     }
     public void LateUpdate()
@@ -29,19 +29,19 @@ public class Player : ScriptedEntity, ICollector
 
         if (Input.GetKey(KeyCode.W))
         {
-            move(Vector3.up * data.speed);
+            move(Vector3.up );
         }
         if (Input.GetKey(KeyCode.S))
         {
-            move(-Vector3.up * data.speed);
+            move(-Vector3.up );
         }
         if (Input.GetKey(KeyCode.A))
         {
-            move(-Vector3.right * data.speed);
+            move(-Vector3.right );
         }
         if (Input.GetKey(KeyCode.D))
         {
-            move(Vector3.right * data.speed);
+            move(Vector3.right );
         }
     }
     public void FollowMouse()
@@ -53,11 +53,11 @@ public class Player : ScriptedEntity, ICollector
     {
         if (!RelativeMovement)
         {
-            r2d.AddForce(v3 * data.speed);
+            r2d.AddForce(v3 * data.stats.speed);
         }
         else
         {
-            r2d.AddRelativeForce(v3 * data.speed);
+            r2d.AddRelativeForce(v3 * data.stats.speed);
 
         }
     }

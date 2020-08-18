@@ -12,7 +12,7 @@ public class SODialogueEditor : Editor
         if (GUILayout.Button("Open Editor"))
         {
             UDialogueNE.OpenWindow(sod);
-            
+
         }
         base.OnInspectorGUI();
 

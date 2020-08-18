@@ -229,9 +229,11 @@ MonoBehaviour:
           item:
             id: 
             count: 0
-  maxHP: 25
-  speed: 5
-  rotationSpeed: 5
-  maxEnergy: 25
-  ERechargeWait: 1.5
-  ERecharge: 0.1
+  stats:
+    maxHP: 50
+    speed: 5
+    rotationSpeed: 5
+    maxEnergy: 20
+    ERechargeWait: 1
+    ERecharge: 0.1
+    maxSpace: 10

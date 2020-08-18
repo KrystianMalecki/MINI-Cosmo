@@ -11,8 +11,9 @@ public class EqItem : Item
     public Vector2Int size = new Vector2Int(1,1);
     public TileType ttype;
     public Sprite textureInShip;
+    public Stats stats;
     public LayoutMaker maker = new LayoutMaker();
-
+    
     public void OnValidate()
     {
         if (maker == null)
