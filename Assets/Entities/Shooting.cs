@@ -11,14 +11,17 @@ public class WeaponEq
     public Transform ShootPoint;
     public KeyCode FireButton = KeyCode.Keypad0;
     public float FireRateTimer=0;
+   
     public WeaponEq(BulletData data, Transform tr)
     {
         Data = data;
         ShootPoint = tr;
     }
+   
 }
 public class Shooting : MonoBehaviour
 {
+    public static KeyCode[] codes = { KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Z, KeyCode.X, KeyCode.C, KeyCode.V, KeyCode.B };
     public bool IsPlayer;
     [SerializeField]
     public List<WeaponEq> Weapons = new List<WeaponEq>();

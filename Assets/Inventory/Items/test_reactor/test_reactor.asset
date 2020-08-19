@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27d43a32dae94240b79777ecf9fc496, type: 3}
+  m_Name: test_reactor
+  m_EditorClassIdentifier: 
+  name: test_reactor
+  texture: {fileID: 21300000, guid: e47f949ad7c693e469757594aedc9348, type: 3}
+  value: 100
+  isStackable: 0
+  data: 
+  description: 
+  size: {x: 1, y: 1}
+  ttype: 1
+  textureInShip: {fileID: 21300000, guid: e47f949ad7c693e469757594aedc9348, type: 3}
+  stats:
+    maxHP: 0
+    speed: 0
+    rotationSpeed: 0
+    maxEnergy: 0
+    ERechargeWait: 0
+    ERecharge: 1
+    maxSpace: 0
+  maker:
+    inv:
+    - line: 01

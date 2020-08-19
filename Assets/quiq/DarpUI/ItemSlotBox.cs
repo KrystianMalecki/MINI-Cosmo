@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -37,28 +36,31 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
     {
         if (ditem == null)
         {
-            if (type == TileType.UI_TRASH)
+            if (DragItem.itemBeingDragged != null)
             {
-                if (Inventory.instance.AddItem(DragItem.itemBeingDragged.idata))
+                if (type == TileType.UI_TRASH)
                 {
-                    sie.ditems.Remove(DragItem.itemBeingDragged);
-                    Destroy(DragItem.itemBeingDragged.gameObject);
-                    DragItem.itemBeingDragged = null;
-                    sie.ditems.ForEach(x => x.cg.blocksRaycasts = true);
-                    sie.getItems();
-                    sie.displayItems();
+                    if (Inventory.instance.AddItem(DragItem.itemBeingDragged.idata))
+                    {
+                        sie.ditems.Remove(DragItem.itemBeingDragged);
+                        Destroy(DragItem.itemBeingDragged.gameObject);
+                        DragItem.itemBeingDragged = null;
+                        sie.ditems.ForEach(x => x.cg.blocksRaycasts = true);
+                        sie.getItems();
+                        sie.displayItems();
 
-                    return;
+                        return;
+                    }
+
                 }
-
-            }
-            if (type != TileType.UI_SLOT_BOX)
-            {
-                if (Check(DragItem.itemBeingDragged))
+                if (type != TileType.UI_SLOT_BOX)
                 {
-                    Add(DragItem.itemBeingDragged);
+                    if (Check(DragItem.itemBeingDragged))
+                    {
+                        Add(DragItem.itemBeingDragged);
 
 
+                    }
                 }
             }
         }
@@ -102,7 +104,7 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
         else
         {
             freerer(true);
-            sie.selectedShip.shipInventory.inv.inv[pos_x].line[pos_y].item = new ItemData("",0);
+            sie.selectedShip.shipInventory.inv.inv[pos_x].line[pos_y].item = new ItemData("", 0);
             ditem = null;
         }
     }
@@ -132,7 +134,7 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
 
 
         bool isOk = true;
-        
+
 
         for (int x = 0; x < dhandler.eqitem.size.x; x++)
         {
@@ -146,7 +148,7 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
                         isOk = false;
                         break;
                     }
-                    if (sie.getAt(pos_x + x, pos_y + y).type==TileType.Null)
+                    if (sie.getAt(pos_x + x, pos_y + y).type == TileType.Null)
                     {
 
                         isOk = false;

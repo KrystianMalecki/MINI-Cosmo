@@ -14,12 +14,12 @@ public class StaticDataManager : MonoBehaviour
     public TileColors colors;
     public static Dictionary<TileType, Color> yo = new Dictionary<TileType, Color> {
     { TileType.Null, new Color(0, 0, 0, 0f) } ,
-    { TileType.Engine, new Color(0.5157232f, 1f, 0.4292453f, 0.7f) },
-    { TileType.Weapon, new Color(1f, 0.4700375f, 0.427451f, 0.7f) },
-    { TileType.Power, new Color(0.9721145f, 1f, 0.427451f, 0.7f) },
-    { TileType.All, new Color(0.4196f, 1f, 0.843f, 0.7f) },
+    { TileType.Engine, new Color(0.5157232f, 1f, 0.4292453f,1f) },
+    { TileType.Weapon, new Color(1f, 0.4700375f, 0.427451f, 1f) },
+    { TileType.Power, new Color(0.9721145f, 1f, 0.427451f, 1f) },
+    { TileType.All, new Color(0.4196f, 1f, 0.843f, 1f) },
 
-    { TileType.Defense,  new Color(0.8773585f, 0.8773585f, 0.8773585f, 0.7f) },
+    { TileType.Defense,  new Color(0.8773585f, 0.8773585f, 0.8773585f, 1f) },
 
     };
     [Header("Tag lists")]

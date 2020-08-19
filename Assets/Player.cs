@@ -8,6 +8,9 @@ public class Player : ScriptedEntity, ICollector
     public bool RelativeMovement;
     public TextMeshProUGUI hptxt;
     public float collect_speed=10;
+    [HideInInspector]
+    public List<Transform> shootpoints = new List<Transform>();
+    public Shooting shooting;
     public override void Damage(float value)
     {
         base.Damage(value);

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ShipBuilderUI : UIBase
 {
+    public Image shipImag; 
     public GameObject TileBase;
     public GameObject DragItemBase;
 
@@ -27,6 +28,7 @@ public class ShipBuilderUI : UIBase
         displayGrid();
         getItems();
         displayItems();
+        shipImag.sprite = selectedShip.BasedOn.SGD.icon;
 
     }
     public void displayItems()

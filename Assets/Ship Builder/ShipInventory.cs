@@ -1,17 +1,24 @@
-﻿using System;
+﻿using Attributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 [Serializable]
-public class ShipInventory 
+public class ShipInventory
 {
-   
-   
+
+
     [SerializeField]
-    public ShipInventoryProp inv=new  ShipInventoryProp();
-   
+    public ShipInventoryProp inv = new ShipInventoryProp();
+    public ShipInventory copy()
+    {
+        ShipInventory si = new ShipInventory();
+
+        si.inv = new ShipInventoryProp(new List<STline>(inv.inv));
+        return si;
+    }
     public void OnValidate()
     {
         if (inv == null)
@@ -30,7 +37,7 @@ public class ShipInventory
         }
         else if (inv.inv[0].line.Count == 0)
         {
-            inv.inv[0] = new STline(new List<ShipTile>{new ShipTile(TileType.Null) });
+            inv.inv[0] = new STline(new List<ShipTile> { new ShipTile(TileType.Null) });
 
         }
     }
@@ -40,6 +47,14 @@ public class ShipInventoryProp
 {
     [SerializeField]
     public List<STline> inv = new List<STline> { new STline(new List<ShipTile> { new ShipTile(TileType.Null) }) };
+    public ShipInventoryProp(List<STline> lines)
+    {
+        inv = lines;
+    }
+    public ShipInventoryProp()
+    {
+        inv = new List<STline> { new STline(new List<ShipTile> { new ShipTile(TileType.Null) }) };
+    }
 }
 [Serializable]
 public class STline
@@ -50,14 +65,4 @@ public class STline
         line = lin;
     }
 }
-public enum TileType { Null, Power, Weapon, Engine,All,Defense, UI_SLOT_BOX, UI_TRASH }
-[Serializable]
-public class ShipTile
-{
-    public TileType type;
-    public ItemData item;
-    public ShipTile(TileType tt)
-    {
-        type = tt;
-    }
-}
+

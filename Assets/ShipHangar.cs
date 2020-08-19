@@ -29,6 +29,7 @@ public class ShipHangar : MonoBehaviour
     public GameObject makePlayerShip(ShipData data, Vector3 position)
     {
         GameObject go = Instantiate(playerShipBase, position, Quaternion.identity);
+        Player p = go.GetComponent<Player>();
         for (int a = 0; a < data.BasedOn.SGD.layers.Count; a++)
         {
             GameObject spr = Instantiate(spriteLayerBase, go.transform);
@@ -54,10 +55,10 @@ public class ShipHangar : MonoBehaviour
             GameObject sp = Instantiate(shootPointBase, go.transform);
             sp.transform.localPosition = new Vector3(data.BasedOn.SGD.shootPoints[a].x, data.BasedOn.SGD.shootPoints[a].y, data.BasedOn.SGD.shootPoints[a].z);
             sp.transform.rotation = Quaternion.Euler(new Vector3(0, 0, data.BasedOn.SGD.shootPoints[a].w));
-            s.Weapons.Add(new WeaponEq(null, sp.transform));
+            p.shootpoints.Add(sp.transform);
         }
 
-        Player p = go.GetComponent<Player>();
+       
         p.data = data;
         p.hpbar = StaticDataManager.instance.hpbar;
         p.hptxt = StaticDataManager.instance.hptxt;
@@ -73,6 +74,8 @@ public class ShipHangar : MonoBehaviour
         // ships[0].ResetToBase();
         player = makePlayerShip(ships[0], new Vector3(0, 0, 0));
         pl = player.GetComponent<Player>();
+        ships[0].CountStats();
+
     }
 
 }

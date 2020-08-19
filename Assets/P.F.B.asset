@@ -31,204 +31,253 @@ MonoBehaviour:
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
       - line:
         - type: 0
           item:
             id: 
             count: 0
-        - type: 2
-          item:
-            id: 
-            count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
-        - type: 5
-          item:
-            id: 
-            count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
-        - type: 2
-          item:
-            id: 
-            count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
       - line:
         - type: 0
           item:
             id: 
             count: 0
-        - type: 2
-          item:
-            id: 
-            count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
         - type: 5
           item:
-            id: 
-            count: 0
+            id: test_armor
+            count: 1
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
-        - type: 2
-          item:
-            id: 
-            count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
       - line:
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
+        - type: 2
+          item:
+            id: test_weapon
+            count: 1
+          weaponShootPointID: 0
         - type: 5
           item:
-            id: 
-            count: 0
+            id: test_armor
+            count: 1
+          weaponShootPointID: 0
         - type: 1
           item:
-            id: 
-            count: 0
+            id: test_reactor
+            count: 1
+          weaponShootPointID: 0
         - type: 5
           item:
-            id: 
-            count: 0
-        - type: 1
+            id: test_armor
+            count: 1
+          weaponShootPointID: 0
+        - type: 2
           item:
-            id: 
-            count: 0
-        - type: 5
-          item:
-            id: 
-            count: 0
+            id: test_weapon
+            count: 1
+          weaponShootPointID: 1
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
       - line:
         - type: 0
           item:
             id: 
             count: 0
-        - type: 5
+          weaponShootPointID: 0
+        - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 1
           item:
-            id: 
-            count: 0
+            id: test_reactor
+            count: 1
+          weaponShootPointID: 0
         - type: 3
           item:
-            id: 
-            count: 0
+            id: test_engine
+            count: 1
+          weaponShootPointID: 0
         - type: 1
           item:
-            id: 
-            count: 0
-        - type: 5
-          item:
-            id: 
-            count: 0
+            id: test_reactor
+            count: 1
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
       - line:
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
-        - type: 5
-          item:
-            id: 
-            count: 0
-        - type: 3
-          item:
-            id: 
-            count: 0
-        - type: 5
-          item:
-            id: 
-            count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
+        - type: 0
+          item:
+            id: 
+            count: 0
+          weaponShootPointID: 0
       - line:
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
         - type: 0
           item:
             id: 
             count: 0
+          weaponShootPointID: 0
   stats:
     maxHP: 50
     speed: 5

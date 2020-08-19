@@ -103,7 +103,7 @@ MonoBehaviour:
   hpbar: {fileID: 0}
   data:
     name: 
-    BasedOn: {fileID: 0}
+    SDBid: 0
     shipInventory:
       inv:
         inv:
@@ -112,82 +112,105 @@ MonoBehaviour:
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 2
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 4
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 0
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
         - line:
           - type: 4
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 2
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 3
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 4
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
         - line:
           - type: 4
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 1
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 5
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 4
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
         - line:
           - type: 0
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 4
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 4
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
           - type: 0
             item:
               id: 
               count: 0
+            weaponShootPointID: 0
+    itemInventory:
+      items: []
+      max_size: 10
     HP: 100
-    maxHP: 100
-    speed: 10
-    rotationSpeed: 5
-    maxEnergy: 20
     energy: 0
-    ERechargeWait: 1
-    ERecharge: 0.1
+    stats:
+      maxHP: 0
+      speed: 0
+      rotationSpeed: 0
+      maxEnergy: 0
+      ERechargeWait: 0
+      ERecharge: 0
+      maxSpace: 0
   energytxt: {fileID: 0}
   energybar: {fileID: 0}
   RelativeMovement: 0
   hptxt: {fileID: 0}
   collect_speed: 5
+  shootpoints: []
+  shooting: {fileID: 268862683417661695}
 --- !u!50 &268862683417661692
 Rigidbody2D:
   serializedVersion: 4

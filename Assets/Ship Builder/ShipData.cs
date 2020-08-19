@@ -31,6 +31,9 @@ public class ShipData
     public void CountStats()
     {
         ResetStats();
+        ShipHangar.instance.pl.shooting.Weapons.Clear();
+        WeaponUIManager wuim = GameManager.instance.wuim;
+        wuim.Wi.Clear();
         for (int i = 0; i < shipInventory.inv.inv.Count; i++)
         {
             for (int j = 0; j < shipInventory.inv.inv[i].line.Count; j++)
@@ -57,18 +60,32 @@ public class ShipData
                             stats.add(eqi.stats);
                             Debug.Log("(" + i + "," + j + ") =" + tile.item.id);
                         }
+                        
+                        
+                        if (Inventory.instance.GetItemInfo(tile.item.id) is WeaponItem)
+                        {
+                            WeaponItem wi = (WeaponItem)Inventory.instance.GetItemInfo(tile.item.id);
+                            // Weapons.Add(new WeaponEq(wi.bulletData, null,tile.weaponShootPointID));
+                            WeaponEq we = new WeaponEq(wi.bulletData, ShipHangar.instance.pl.shootpoints[tile.weaponShootPointID]);
+                            we.FireButton = Shooting.codes[ShipHangar.instance.pl.shooting.Weapons.Count];
+                            ShipHangar.instance.pl.shooting.Weapons.Add(we);
+                            wuim.Wi.Add(wi);
+                        }
                     }
                 }
         
             }
         }
         itemInventory.max_size = stats.maxSpace;
-
+    
+        wuim.s = ShipHangar.instance.pl.shooting;
+       
+            wuim.Start();
     }
     public void makeNew()
     {
         ResetStats();
-        shipInventory = BasedOn.shipInventory;
+        shipInventory = BasedOn.shipInventory.copy();
     }
 }
 [Serializable]
@@ -82,12 +99,12 @@ public class Stats
 
 
     [Header("Energy")]
-    public float maxEnergy = 20;
-    public float ERechargeWait = 1;
+    public float maxEnergy ;
+    public float ERechargeWait ;
     [Tooltip("times 10 per second")]
-    public float ERecharge = 0.1f;
+    public float ERecharge ;
 
-    public int maxSpace=10;
+    public int maxSpace;
     public Stats copy()
     {
         Stats copy = new Stats();

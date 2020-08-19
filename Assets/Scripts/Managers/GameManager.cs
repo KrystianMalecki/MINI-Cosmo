@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    public WeaponUIManager wuim;
 
+    public void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+    }
     public void OnEnable()
     {
         if (PlayerPrefs.GetString("new_game") == "true")
