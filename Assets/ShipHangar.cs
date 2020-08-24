@@ -78,4 +78,11 @@ public class ShipHangar : MonoBehaviour
 
     }
 
+    public void upDateRM()
+    {
+        if (pl != null)
+        {
+            pl.RelativeMovement = SettingsUI.getSetting("RelativeMovement");
+        }
+    }
 }

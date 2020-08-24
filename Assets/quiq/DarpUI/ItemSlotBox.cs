@@ -34,6 +34,8 @@ public class ItemSlotBox : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
+
+
         if (ditem == null)
         {
             if (DragItem.itemBeingDragged != null)

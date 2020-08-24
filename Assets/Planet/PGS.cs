@@ -211,6 +211,8 @@ public class OrbiterPGD
     public Vector3 axis;
     public float distance;
 }
+#if UNITY_EDITOR
+
 [CustomEditor(typeof(PGS))]
 public class EditorPGS : Editor
 {
@@ -226,3 +228,4 @@ public class EditorPGS : Editor
 
 
 }
+#endif

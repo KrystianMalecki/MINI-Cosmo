@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2895fa044a377024a91d2aa223104335, type: 3}
+  m_Name: New SODialogue
+  m_EditorClassIdentifier: 
+  nodes:
+  - rect:
+      serializedVersion: 2
+      x: -460
+      y: 314
+      width: 100
+      height: 100
+    type: 3
+    outs: 01000000
+    id: 0
+    charSpr: {fileID: 0}
+    characterName: '[Character Name]'
+    text: '[Text]'
+    responses: []
+    funcData2:
+      m_PersistentCalls:
+        m_Calls: []
+    ifData2:
+      _target: {fileID: 0}
+      _methodName: 
+      _args: []
+      _dynamic: 0
+      _typeName: conditioner, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      dirty: 0
+    UDNElink: 
+  - rect:
+      serializedVersion: 2
+      x: -268
+      y: 342
+      width: 200
+      height: 230
+    type: 0
+    outs: 02000000ffffffff
+    id: 1
+    charSpr: {fileID: 0}
+    characterName: namer
+    text: 0
+    responses:
+    - 1
+    - 2
+    funcData2:
+      m_PersistentCalls:
+        m_Calls: []
+    ifData2:
+      _target: {fileID: 0}
+      _methodName: 
+      _args: []
+      _dynamic: 0
+      _typeName: conditioner, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      dirty: 0
+    UDNElink: 
+  - rect:
+      serializedVersion: 2
+      x: 11
+      y: 336
+      width: 350
+      height: 105
+    type: 2
+    outs: 0300000004000000
+    id: 2
+    charSpr: {fileID: 0}
+    characterName: '[Character Name]'
+    text: '[Text]'
+    responses: []
+    funcData2:
+      m_PersistentCalls:
+        m_Calls: []
+    ifData2:
+      _target: {fileID: 910367522141791911, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+      _methodName: BoolReturner
+      _args: []
+      _dynamic: 0
+      _typeName: conditioner, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      dirty: 0
+    UDNElink: 
+  - rect:
+      serializedVersion: 2
+      x: 472
+      y: 228
+      width: 300
+      height: 120
+    type: 1
+    outs: ffffffff
+    id: 3
+    charSpr: {fileID: 0}
+    characterName: '[Character Name]'
+    text: '[Text]'
+    responses: []
+    funcData2:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 910367522141791911, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+          m_TargetAssemblyTypeName: MyTest, Assembly-CSharp
+          m_MethodName: Say1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    ifData2:
+      _target: {fileID: 0}
+      _methodName: 
+      _args: []
+      _dynamic: 0
+      _typeName: conditioner, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      dirty: 0
+    UDNElink: 
+  - rect:
+      serializedVersion: 2
+      x: 570
+      y: 366
+      width: 300
+      height: 120
+    type: 1
+    outs: ffffffff
+    id: 4
+    charSpr: {fileID: 0}
+    characterName: '[Character Name]'
+    text: '[Text]'
+    responses: []
+    funcData2:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 910367522141791911, guid: ba63d852436c2564da4ffe4468e9e1b7, type: 3}
+          m_TargetAssemblyTypeName: MyTest, Assembly-CSharp
+          m_MethodName: Say2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+    ifData2:
+      _target: {fileID: 0}
+      _methodName: 
+      _args: []
+      _dynamic: 0
+      _typeName: conditioner, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      dirty: 0
+    UDNElink: 

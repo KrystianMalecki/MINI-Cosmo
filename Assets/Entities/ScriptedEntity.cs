@@ -46,7 +46,7 @@ public class ScriptedEntity : Entity
         }
         if (energytxt != null)
         {
-            energytxt.text = StaticDataManager.instance.TMProFormater + "Energy: " + data.energy.ToString("0") + "/" + data.stats.maxEnergy.ToString("0");
+            energytxt.text = StaticDataManager.instance.TMProFormater + /*"Energy: " +*/ data.energy.ToString("0") + "/" + data.stats.maxEnergy.ToString("0");
             if (energybar != null)
             {
                 energybar.fillAmount = data.energy / data.stats.maxEnergy;

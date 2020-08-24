@@ -11,12 +11,18 @@ public class Player : ScriptedEntity, ICollector
     [HideInInspector]
     public List<Transform> shootpoints = new List<Transform>();
     public Shooting shooting;
+    public override void Start()
+    {
+        base.Start();
+       RelativeMovement= SettingsUI.getSetting("RelativeMovement");
+
+    }
     public override void Damage(float value)
     {
         base.Damage(value);
         if (hptxt != null)
         {
-            hptxt.text = StaticDataManager.instance.TMProFormater + "HP: " + data.HP.ToString("0") + "/" + data.stats.maxHP.ToString("0");
+            hptxt.text = StaticDataManager.instance.TMProFormater /*+ "HP: " */+ data.HP.ToString("0") + "/" + data.stats.maxHP.ToString("0");
         }
     }
     public void LateUpdate()

@@ -49,6 +49,7 @@ public class Orbiter : MonoBehaviour
 
     }
 }
+#if UNITY_EDITOR
 [CustomEditor(typeof(Orbiter))]
 public class EditorOrbiter : Editor
 {
@@ -62,3 +63,4 @@ public class EditorOrbiter : Editor
         }
     }
 }
+#endif
