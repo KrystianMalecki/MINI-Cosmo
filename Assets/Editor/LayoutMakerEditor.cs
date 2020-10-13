@@ -10,7 +10,7 @@ public class LayoutMakerEditor : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-
+       
         SerializedProperty arrayProp = property.FindPropertyRelative("inv");
         int max = 0;
         Rect r = new Rect(position);

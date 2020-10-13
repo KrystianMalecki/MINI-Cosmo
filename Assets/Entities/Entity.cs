@@ -4,11 +4,23 @@ using UnityEngine.UI;
 using UnityEngine;
 public class Entity : MonoBehaviour
 {
-    private float HP;
-    private float MaxHP;
+
+private float hp; 
+public virtual float HP   
+{
+    get { return hp; }
+    set { hp = value; }
+}
+private float maxhp;
+    public virtual float MaxHP
+    {
+        get { return MaxHP; }
+        set { MaxHP = value; }
+    }
     private GameObject Explosion;
     public Rigidbody2D r2d;
     public Image hpbar;
+    
     public virtual void Start()
     {
         HP = MaxHP;

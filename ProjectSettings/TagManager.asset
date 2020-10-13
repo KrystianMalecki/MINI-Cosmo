@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - InteractObject
   - Destroyable
+  - fractiontest1
+  - fractiontest2
   layers:
   - Default
   - TransparentFX

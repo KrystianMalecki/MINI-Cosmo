@@ -1,9 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
 using UnityEditor;
-using System.Collections.Generic;
-using System;
-using System.Net.NetworkInformation;
-using System.Linq;
+using UnityEngine;
 
 public class UDialogueNE : EditorWindow
 {

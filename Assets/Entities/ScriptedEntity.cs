@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,26 +12,29 @@ public class ScriptedEntity : Entity
     public Image energybar;
     public override void Start()
     {
-        data.HP = data.stats.maxHP;
-        Damage(0);
+      /*  data.HP = data.stats.maxHP;
+        Damage(0);*/
         base.Start();
         data.energy = data.stats.maxEnergy;
         AddEnergy(0);
 
     }
+    public override float HP { get => data.HP; set => data.HP = value; }
+    public override float MaxHP { get => data.stats.maxHP; set => data.stats.maxHP = value; }
+
     public override void Damage(float value)
     {
 
-        data.HP -= value;
-        if (hpbar != null)
-        {
-            hpbar.fillAmount = data.HP / data.stats.maxHP;
-        }
-        if (data.HP <= 0)
-        {
-            Die();
-        }
-
+        /* data.HP -= value;
+         if (hpbar != null)
+         {
+             hpbar.fillAmount = data.HP / data.stats.maxHP;
+         }
+         if (data.HP <= 0)
+         {
+             Die();
+         }*/
+        base.Damage(value);
 
     }
     public void AddEnergy(float number)

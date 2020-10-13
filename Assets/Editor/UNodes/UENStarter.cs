@@ -1,10 +1,5 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor;
-using UnityEngine.Events;
-using System;
 
 public class UENStarter : UEditorNode
 {
@@ -17,11 +12,12 @@ public class UENStarter : UEditorNode
         {
             nodeData.outs.Add(-1);
         }
+        setRect();
         ConOuts.Add(new UConnector(UConnectorType.Out, this, 0, 17.5f, Color.white));
         ConIn = null;
 
 
-       
+
         setRect();
     }
     public void setRect()
@@ -38,7 +34,7 @@ public class UENStarter : UEditorNode
         on.background = EditorGUIUtility.Load("builtin skins/lightskin/images/node3 on.png") as Texture2D;
         guic.fontSize = 20;
         guic.fontStyle = FontStyle.Bold;
-        
+
         style.normal = off;
     }
 
@@ -46,9 +42,9 @@ public class UENStarter : UEditorNode
     {
         y = 0;
         base.Draw();
-     
-        GUI.Label(makeRect(0, 0, 30),"Start",guic);
-        
+
+        GUI.Label(makeRect(0, 0, 30), "Start", guic);
+
 
     }
 

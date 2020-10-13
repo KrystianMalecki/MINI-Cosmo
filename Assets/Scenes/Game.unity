@@ -3388,6 +3388,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421989182}
   m_CullTransparentMesh: 0
+--- !u!1 &466772386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466772388}
+  - component: {fileID: 466772387}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &466772387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466772386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5049ced0477138468412040c3057e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &466772388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466772386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472760230
 GameObject:
   m_ObjectHideFlags: 0
@@ -14695,7 +14738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -54.953987}
+  m_AnchoredPosition: {x: 0, y: -54.95398}
   m_SizeDelta: {x: 0, y: -109.90782}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769262240
@@ -22484,7 +22527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00018310547, y: -34.954018}
+  m_AnchoredPosition: {x: 0.00018310547, y: -34.95401}
   m_SizeDelta: {x: -0.00030517578, y: -69.90791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070983435
@@ -22878,7 +22921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -90.00001, y: 0}
+  m_AnchoredPosition: {x: -90, y: 0}
   m_SizeDelta: {x: -180, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1148558366
@@ -23060,7 +23103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -72.39002, y: -75.00001}
+  m_AnchoredPosition: {x: -72.390015, y: -75}
   m_SizeDelta: {x: -144.7755, y: -150.00002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1174358824
@@ -24224,7 +24267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 100.00011, y: -74.9831}
+  m_AnchoredPosition: {x: 100.00011, y: -74.98309}
   m_SizeDelta: {x: -199.99979, y: -150.03384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334226473
@@ -43111,7 +43154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -125.00001, y: -4.5}
+  m_AnchoredPosition: {x: -125, y: -4.5}
   m_SizeDelta: {x: -256, y: -15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2000217590
@@ -43365,6 +43408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2065295608}
   - component: {fileID: 2065295607}
+  - component: {fileID: 2065295609}
   m_Layer: 0
   m_Name: Save Manager
   m_TagString: Untagged
@@ -43427,6 +43471,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2065295609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065295606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a56560270ef734583e0d6f4d53851a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  r2d: {fileID: 0}
+  hpbar: {fileID: 0}
+  data:
+    name: 
+    SDBid: 0
+    shipInventory:
+      inv:
+        inv:
+        - line:
+          - type: 0
+            item:
+              id: 
+              count: 0
+            weaponShootPointID: 0
+    itemInventory:
+      items: []
+      max_size: 10
+    HP: 0
+    energy: 0
+    stats:
+      maxHP: 0
+      speed: 0
+      rotationSpeed: 0
+      maxEnergy: 0
+      ERechargeWait: 0
+      ERecharge: 0
+      maxSpace: 0
+  energytxt: {fileID: 0}
+  energybar: {fileID: 0}
+  brain: {fileID: 11400000, guid: 2485a697ca087cb4c91891061afb8605, type: 2}
+  Target: {fileID: 0}
+  shooter: {fileID: 0}
 --- !u!1 &2072285978
 GameObject:
   m_ObjectHideFlags: 0

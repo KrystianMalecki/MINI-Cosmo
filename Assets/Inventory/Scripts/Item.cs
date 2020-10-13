@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using System;
 [Serializable]
 [CreateAssetMenu(fileName = "New Item", menuName = "Custom/Inv/Item")]
 public class Item : ScriptableObject
@@ -19,8 +17,8 @@ public class Item : ScriptableObject
 public class ItemData
 {
     public string id;
-    public int count=1;
-    public ItemData(string s,int i=1)
+    public int count = 1;
+    public ItemData(string s, int i = 1)
     {
         id = s;
         count = i;
